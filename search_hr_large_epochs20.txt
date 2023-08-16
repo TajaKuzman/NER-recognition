@@ -1,0 +1,62 @@
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: / Waiting for wandb.init()...wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: / Waiting for wandb.init()...wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230816_102231-9cypr3n7
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run spring-planet-22
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER-recognition
+wandb: 🚀 View run at https://wandb.ai/tajak/NER-recognition/runs/9cypr3n7
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 3bc1dc1b-7c72-4b57-98b6-d696602c427c)')' thrown while requesting HEAD https://huggingface.co/xlm-roberta-large/resolve/main/config.json
+WARNING:huggingface_hub.utils._http:'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 3bc1dc1b-7c72-4b57-98b6-d696602c427c)')' thrown while requesting HEAD https://huggingface.co/xlm-roberta-large/resolve/main/config.json
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at xlm-roberta-large and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 5a010793-5956-4627-a76b-f455d355426b)')' thrown while requesting HEAD https://huggingface.co/xlm-roberta-large/resolve/main/sentencepiece.bpe.model
+WARNING:huggingface_hub.utils._http:'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 5a010793-5956-4627-a76b-f455d355426b)')' thrown while requesting HEAD https://huggingface.co/xlm-roberta-large/resolve/main/sentencepiece.bpe.model
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Label list
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc', 'I-deriv-per']
+
+
+test_df:
+      sentence_id     words labels
+6004  set.hr-s297   Beograd  B-loc
+6005  set.hr-s297         i      O
+6006  set.hr-s297  Priština  B-loc
+6007  set.hr-s297  postigli      O
+6008  set.hr-s297   dogovor      O
+Training and running evaluation during training, epochs: 20
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.043068511647466494, 'precision': 0.8531409168081494, 'recall': 0.883128295254833, 'f1_score': 0.8678756476683939}
+INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+wandb: WARNING wandb uses only 10000 data points to create the plots.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.043068511647466494, 'precision': 0.8531409168081494, 'recall': 0.883128295254833, 'f1_score': 0.8678756476683939}
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb: Training loss █▃▂▁▁▁▂▁▂▁▂▁
+wandb:     eval_loss ▁
+wandb:      f1_score ▁
+wandb:   global_step ▁▂▂▃▃▄▅▅▆▇▇██
+wandb:            lr █▇▇▆▅▅▄▄▃▂▂▁
+wandb:     precision ▁
+wandb:        recall ▁
+wandb:    train_loss ▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.02327
+wandb:     eval_loss 0.04307
+wandb:      f1_score 0.86788
+wandb:   global_step 619
+wandb:            lr 0.0
+wandb:     precision 0.85314
+wandb:        recall 0.88313
+wandb:    train_loss 0.06746
+wandb: 
+wandb: 🚀 View run spring-planet-22 at: https://wandb.ai/tajak/NER-recognition/runs/9cypr3n7
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER-recognition/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODA1NzAy/version_details/v1
+wandb: Synced 5 W&B file(s), 3 media file(s), 5 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230816_102231-9cypr3n7/logs

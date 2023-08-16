@@ -18,6 +18,7 @@ def extract_ner_dataset(scenario):
     """
     from conllu import parse
     import pandas as pd
+    import numpy as np
     import json
 
     datasets = {
@@ -84,6 +85,13 @@ def extract_ner_dataset(scenario):
             # Create a pandas df out of the dictionary
             df = pd.DataFrame(data_dict)
 
+            LABELS = list(df.labels.unique())
+            # If * is used, change * to O, because this causes errors
+            if "*" in LABELS:
+                LABELS[LABELS.index("*")] = "O"
+
+                df["labels"] = np.where(df["labels"] == "*", "O", df["labels"])
+
             # Show the df
             print(df.head())
             print("\n")
@@ -94,7 +102,7 @@ def extract_ner_dataset(scenario):
 
             # Save the information in a format that will be used by simpletransformers
             json_dict = {
-                "labels": list(df.labels.unique()),
+                "labels": LABELS,
                 "dataset": df.to_dict()
             }
 
@@ -126,6 +134,14 @@ def extract_ner_dataset(scenario):
             # Create a pandas df out of the dictionary
             df = pd.DataFrame(data_dict)
 
+            LABELS = list(df.labels.unique())
+
+            # If * is used, change * to O, because this causes errors
+            if "*" in LABELS:
+                LABELS[LABELS.index("*")] = "O"
+
+                df["labels"] = np.where(df["labels"] == "*", "O", df["labels"])
+            
             # Show the df
             print(df.head())
             print("\n")
@@ -135,10 +151,11 @@ def extract_ner_dataset(scenario):
             print("\n")
             print(df.labels.value_counts(normalize=True))
             print("\n")
+
             # Save the information in a format that will be used by simpletransformers
 
             json_dict = {
-                "labels": list(df.labels.unique()),
+                "labels": LABELS,
                 "train": df[df["split"] == "train"].drop(columns="split").to_dict(),
                 "dev": df[df["split"] == "dev"].drop(columns="split").to_dict(),
                 "test": df[df["split"] == "test"].drop(columns="split").to_dict()

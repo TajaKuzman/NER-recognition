@@ -1,1 +1,5 @@
 /datasets
+/wandb
+/runs
+/outputs
+/ner

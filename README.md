@@ -46,3 +46,39 @@ test_df = pd.DataFrame(json_dict["test"])
 dev_df = pd.DataFrame(json_dict["dev"])
 
 ```
+
+## Hyperparameter search
+
+### Hyperparameter search for XLM-R-Large
+
+I performed it on standard HR dataset (hr500k).
+
+I searched for the optimum no. of epochs, while we set the other hyperparameters to these values:
+
+```
+model_args ={"overwrite_output_dir": True,
+             #"num_train_epochs": epochs,
+             "labels_list": LABELS,
+             "learning_rate": 1e-5,
+             "train_batch_size": 32,
+             # Comment out no_cache and no_save if you want to save the model
+             "no_cache": True,
+             "no_save": True,
+            # Only the trained model will be saved (if you want to save it)
+            # - to prevent filling all of the space
+            # "save_model_every_epoch":False,
+             "max_seq_length": 512,
+             "save_steps": -1,
+            # Use these parameters if you want to evaluate during training
+            "evaluate_during_training": True,
+            ## Calculate how many steps will each epoch have
+            # num steps in epoch = training samples / batch size
+            # Then evaluate after every 3rd epoch
+            "evaluate_during_training_steps": len(train_df.words)/32*3,
+            "evaluate_during_training_verbose": True,
+            "use_cached_eval_features": True,
+            'reprocess_input_data': True,
+}
+```
+
+I searched for the optimum no. of epochs by training the model for 20 epochs and then evaluating during training. Then I inspected how the evaluation loss falls during training and did a more fine-grained evaluation by training the model again on a couple of most promising epochs.

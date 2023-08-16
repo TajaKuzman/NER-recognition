@@ -26,6 +26,7 @@ top     elexiswsd1.1416.sl.132238      .      O
 freq                           44   2019  28508
 
 
+labels
 O              0.912753
 B-loc          0.022668
 B-per          0.015753
@@ -36,7 +37,7 @@ I-org          0.008036
 I-per          0.007748
 I-loc          0.005059
 B-deriv-per    0.001345
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -57,6 +58,7 @@ top     senticoref8298.1.3       ,       O
 freq                   172   26072  350085
 
 
+labels
 O              0.893161
 B-org          0.031220
 B-per          0.019211
@@ -68,7 +70,7 @@ B-misc         0.002618
 I-loc          0.002189
 B-deriv-per    0.000926
 I-deriv-per    0.000005
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -89,6 +91,7 @@ top     ssj531.2796.9962       ,       O
 freq                 232   17551  224568
 
 
+labels
 O              0.952108
 B-per          0.012414
 B-loc          0.008340
@@ -100,7 +103,7 @@ B-misc         0.002552
 I-loc          0.002090
 B-deriv-per    0.000691
 I-deriv-per    0.000008
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -122,6 +125,7 @@ top     janes.news.reporter.27057.6.1      ,      O
 freq                               54   3866  70762
 
 
+labels
 O              0.931986
 B-per          0.046638
 B-org          0.006282
@@ -132,7 +136,7 @@ I-per          0.001383
 I-org          0.001067
 B-deriv-per    0.000500
 I-loc          0.000342
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -140,27 +144,29 @@ Name: labels, dtype: float64
 Extracted dataset saved as datasets/Janes-Tag.3.0.CoNLL-U/janes-tag.ud.conllu_extracted.json
 Processing dataset: s_Croatian
   sentence_id          words labels split
-0   set.hr-s1         Proces      *   dev
-1   set.hr-s1  privatizacije      *   dev
-2   set.hr-s1             na      *   dev
+0   set.hr-s1         Proces      O   dev
+1   set.hr-s1  privatizacije      O   dev
+2   set.hr-s1             na      O   dev
 3   set.hr-s1         Kosovu  B-loc   dev
-4   set.hr-s1            pod      *   dev
+4   set.hr-s1            pod      O   dev
 
 
         sentence_id   words  labels   split
 count        499635  499635  499635  499635
 unique        24763   73456      11       3
-top     bug.hr-s525       ,       *   train
+top     bug.hr-s525       ,       O   train
 freq            255   26303  462502  398681
 
 
+split
 train    0.797944
 test     0.102455
 dev      0.099601
-Name: split, dtype: float64
+Name: proportion, dtype: float64
 
 
-*              0.925680
+labels
+O              0.925680
 B-per          0.013660
 B-org          0.013116
 B-loc          0.012607
@@ -171,7 +177,7 @@ B-misc         0.006903
 I-loc          0.002502
 B-deriv-per    0.000723
 I-deriv-per    0.000002
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -180,26 +186,28 @@ Extracted dataset saved as datasets/hr500k.conllup_extracted.json
 Processing dataset: ns_Croatian
             sentence_id    words labels  split
 0  344431071296884736.1   Vakula  B-per  train
-1  344431071296884736.1    dragi      *  train
+1  344431071296884736.1    dragi      O  train
 2  344431071296884736.1  Drakula  B-per  train
-3  344431071296884736.1        ,      *  train
-4  344431071296884736.1     kiša      *  train
+3  344431071296884736.1        ,      O  train
+4  344431071296884736.1     kiša      O  train
 
 
                  sentence_id  words labels  split
 count                  89855  89855  89855  89855
 unique                  7939  27154     11      3
-top     376456263439507456.1      ,      *  train
+top     376456263439507456.1      ,      O  train
 freq                      39   3224  82575  71967
 
 
+split
 train    0.800924
 test     0.099627
 dev      0.099449
-Name: split, dtype: float64
+Name: proportion, dtype: float64
 
 
-*              0.918981
+labels
+O              0.918981
 B-per          0.039697
 B-org          0.009871
 B-misc         0.008759
@@ -210,7 +218,7 @@ I-org          0.003094
 I-loc          0.000857
 B-deriv-per    0.000579
 I-deriv-per    0.000011
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -218,27 +226,29 @@ Name: labels, dtype: float64
 Extracted dataset saved as datasets/reldi-normtagner-hr.conllup_extracted.json
 Processing dataset: s_Serbian
   sentence_id          words labels split
-0      set-s1         Proces      *   dev
-1      set-s1  privatizacije      *   dev
-2      set-s1             na      *   dev
+0      set-s1         Proces      O   dev
+1      set-s1  privatizacije      O   dev
+2      set-s1             na      O   dev
 3      set-s1         Kosovu  B-loc   dev
-4      set-s1            pod      *   dev
+4      set-s1            pod      O   dev
 
 
        sentence_id  words labels  split
 count        97673  97673  97673  97673
 unique        4384  19712     10      3
-top      news-s306      ,      *  train
+top      news-s306      ,      O  train
 freq            88   4983  86875  74259
 
 
+split
 train    0.760282
 dev      0.122787
 test     0.116931
-Name: split, dtype: float64
+Name: proportion, dtype: float64
 
 
-*              0.889447
+labels
+O              0.889447
 B-loc          0.028043
 B-org          0.020405
 B-per          0.020087
@@ -248,7 +258,7 @@ I-misc         0.005928
 I-loc          0.004843
 B-misc         0.003379
 B-deriv-per    0.000962
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 
@@ -257,26 +267,28 @@ Extracted dataset saved as datasets/set.sr.plus.conllup_extracted.json
 Processing dataset: ns_Serbian
             sentence_id      words labels  split
 0  490437095392301056.1  @vukomand  B-per  train
-1  490437095392301056.1    Gospođo      *  train
+1  490437095392301056.1    Gospođo      O  train
 2  490437095392301056.1     Dijana  B-per  train
-3  490437095392301056.1       koje      *  train
-4  490437095392301056.1     lekove      *  train
+3  490437095392301056.1       koje      O  train
+4  490437095392301056.1     lekove      O  train
 
 
                  sentence_id  words labels  split
 count                  92271  92271  92271  92271
 unique                  6899  24385     12      3
-top     501127368661274624.1      ,      *  train
+top     501127368661274624.1      ,      O  train
 freq                      35   4313  87371  73943
 
 
+split
 train    0.801368
 dev      0.099771
 test     0.098861
-Name: split, dtype: float64
+Name: proportion, dtype: float64
 
 
-*              0.946896
+labels
+O              0.946896
 B-per          0.025848
 B-org          0.007630
 B-loc          0.005657
@@ -288,7 +300,7 @@ B-deriv-per    0.000759
 I-loc          0.000574
 B-*            0.000033
 I-*            0.000033
-Name: labels, dtype: float64
+Name: proportion, dtype: float64
 
 
 

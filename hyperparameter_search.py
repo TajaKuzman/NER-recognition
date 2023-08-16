@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import json
 from simpletransformers.ner import NERModel, NERArgs
 from tqdm.autonotebook import tqdm as notebook_tqdm
@@ -7,12 +8,7 @@ import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import logging
 import sklearn
-import numpy as np
-import argparse
-import torch
 from numba import cuda
-import gc
-
 
 logging.basicConfig(level=logging.INFO)
 transformers_logger = logging.getLogger("transformers")
@@ -37,21 +33,31 @@ dev_df = pd.DataFrame(json_dict["dev"])
 
 # Define the labels
 LABELS = json_dict["labels"]
-
-print("Label list")
 print(LABELS)
 
-print("\n\ntest_df:")
-print(test_df.head())
+print(train_df.shape, test_df.shape, dev_df.shape)
+print(train_df.head())
 
+# Define the model
+
+# Model type - a dictionary of type and model name.
+# To refer to our own models, use the path to the model directory as the model name.
+model_type_dict = {
+    "sloberta": ["camembert", "EMBEDDIA/sloberta"],
+    "csebert": ["bert", "EMBEDDIA/crosloengual-bert"],
+    "xlm-r-base": ["xlmroberta", "xlm-roberta-base"],
+    "xlm-r-large": ["xlmroberta", "xlm-roberta-large"],
+    "bertic": ["electra", "classla/bcms-bertic"]
+}
 
 epochs = 20
+batch_size = 32
 
 model_args = NERArgs()
 
 # define hyperparameters
 model_args ={"overwrite_output_dir": True,
-             #"num_train_epochs": epochs,
+             "num_train_epochs": epochs,
              "labels_list": LABELS,
              "learning_rate": 1e-5,
              "train_batch_size": 32,
@@ -68,50 +74,23 @@ model_args ={"overwrite_output_dir": True,
             ## Calculate how many steps will each epoch have
             # num steps in epoch = training samples / batch size
             # Then evaluate after every 3rd epoch
-            "evaluate_during_training_steps": len(train_df.words)/32*3,
+            "evaluate_during_training_steps": len(train_df.words)/batch_size*3,
             "evaluate_during_training_verbose": True,
             "use_cached_eval_features": True,
             'reprocess_input_data': True,
             "wandb_project": "NER",
             "silent": True,
-            "wandb_kwargs": {"name": "default"},
              }
 
-def train(model_name, train_df, dev_df):
-    # Initialize a new wandb run
-    wandb.init()
 
-    model_type_dict = {
-        "sloberta": ["camembert", "EMBEDDIA/sloberta"],
-        "csebert": ["bert", "EMBEDDIA/crosloengual-bert"],
-        "xlm-r-base": ["xlmroberta", "xlm-roberta-base"],
-        "xlm-r-large": ["xlmroberta", "xlm-roberta-large"],
-        "bertic": ["electra", "classla/bcms-bertic"]
-    }
+# Choose the model
+current_model_name = "xlm-r-base"
 
-    # Create a model
-    model = NERModel(
-        model_type_dict[model_name][0],
-        model_type_dict[model_name][1],
-        use_cuda=True,
-        args = model_args)
-    
-    # Train the model
-    model.train_model(train_df, eval_df=dev_df)
+current_model = NERModel(
+    model_type_dict[current_model_name][0],
+    model_type_dict[current_model_name][1],
+    use_cuda=True,
+    args = model_args)
 
-    # Evaluate the model
-    model.eval_model(dev_df)
-
-    # Sync wandb
-    wandb.join()
-
-    gc.collect()
-    torch.cuda.empty_cache()
-
-# Choose the model - insert the model name as it is in the model_type_dict
-model_name = "xlm-r-large"
-
-# Run the training
-print("Training and running evaluation during training, epochs: {}".format(epochs))
-
-train(model_name, train_df, dev_df)
+# Train the model
+current_model.train_model(train_df,eval_df=dev_df)

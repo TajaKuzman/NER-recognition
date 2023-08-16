@@ -51,23 +51,23 @@ dev_df = pd.DataFrame(json_dict["dev"])
 
 ### Hyperparameter search for XLM-R-Large
 
+Code (change in the code the number of epochs you want to run - line 53 - and whether the xlm-r model is base or large - line 87):
+```
+CUDA_VISIBLE_DEVICES=1 nohup python hyperparameter_search.py > search_hr_base_epochs20.txt &
+```
+
 I performed it on standard HR dataset (hr500k).
 
 I searched for the optimum no. of epochs, while we set the other hyperparameters to these values:
 
 ```
 model_args ={"overwrite_output_dir": True,
-             #"num_train_epochs": epochs,
              "labels_list": LABELS,
              "learning_rate": 1e-5,
              "train_batch_size": 32,
-             # Comment out no_cache and no_save if you want to save the model
              "no_cache": True,
              "no_save": True,
-            # Only the trained model will be saved (if you want to save it)
-            # - to prevent filling all of the space
-            # "save_model_every_epoch":False,
-             "max_seq_length": 512,
+             "max_seq_length": 256,
              "save_steps": -1,
             # Use these parameters if you want to evaluate during training
             "evaluate_during_training": True,
@@ -82,3 +82,59 @@ model_args ={"overwrite_output_dir": True,
 ```
 
 I searched for the optimum no. of epochs by training the model for 20 epochs and then evaluating during training. Then I inspected how the evaluation loss falls during training and did a more fine-grained evaluation by training the model again on a couple of most promising epochs.
+
+Based on the training loss, evaluation loss and f1 score, the optimum no. of epochs is *7* for large models and *8* for base models (afterwards, f1 plateaus and evaluation loss rises).
+
+Hyperparameter search for XLM-R-large:
+
+![](figures/xlm-r-l-hr-hyperparameter-search-epoch7.png)
+
+Hyperparameter search for XLM-R-base:
+
+![](figures/xlm-r-base-hr-hyperparameter-search-epoch8.png)
+
+### Hyperparameters used for XLM-R-large models
+
+```
+model_args ={"overwrite_output_dir": True,
+             "num_train_epochs": 7,
+             "labels_list": LABELS,
+             "learning_rate": 1e-5,
+             "train_batch_size": 32,
+             # Comment out no_cache and no_save if you want to save the model
+             "no_cache": True,
+             "no_save": True,
+             "max_seq_length": 256,
+             "save_steps": -1,
+            "wandb_project": "NER",
+            "silent": True,
+             }
+```
+
+### Hyperparameters used for XLM-R-base models
+
+Including SloBERTa, BERTić, CSEBERT.
+
+```
+model_args ={"overwrite_output_dir": True,
+             "num_train_epochs": 8,
+             "labels_list": LABELS,
+             "learning_rate": 1e-5,
+             "train_batch_size": 32,
+             # Comment out no_cache and no_save if you want to save the model
+             "no_cache": True,
+             "no_save": True,
+             "max_seq_length": 256,
+             "save_steps": -1,
+            "wandb_project": "NER",
+            "silent": True,
+             }
+```
+
+## Model evaluation
+
+For each dataset, run the following code (with the path to the extracted dataset in json as the argument):
+
+```
+CUDA_VISIBLE_DEVICES=1 nohup python ner-classification.py datasets/hr500k.conllup_extracted.json > ner_classification.log &
+```

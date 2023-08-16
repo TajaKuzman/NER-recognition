@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 
 #Calculate the scores for each model
-def testing(true, pred, labels, show_matrix=False):
+def testing(true, pred, labels, run_name, show_matrix=False):
     """
     This function takes the list of true labels and list of predictions and evaluates the model based on comparing them.
     It calculates accuracy, micro and macro F1 and provides a classification report.
@@ -55,9 +55,12 @@ def testing(true, pred, labels, show_matrix=False):
         plt.show()
         plt.draw()
 
+        fig1.savefig(f"figures/cm-{run_name}.png",dpi=100)
+
     try:
-        print(classification_report(y_true, y_pred, output_dict=True))
+        class_report = classification_report(y_true, y_pred, output_dict=True)
     except:
         print("Error when calculating classification report")
+        class_report = "N/A"
     
-    return {"accuracy": accuracy, "micro F1":micro, "macro F1": macro}
+    return {"accuracy": accuracy, "micro F1":micro, "macro F1": macro, "label-report": class_report}

@@ -158,15 +158,18 @@ def train_and_test(model, train_df, test_df, dataset_path):
     # Add y_pred and y_true to the metrics dict
     metrics["y_true"] = y_true
     metrics["y_pred"] = preds_list
+
+    # Let's also add entire results
+    metrics["results_output"] = results    
     
     # The function returns a dict with accuracy, micro f1, macro f1, y_true and y_pred
     return metrics
 
-# For each model, repeat training and testing 5 times
+# For each model, repeat training and testing 5 times - let's do 2 times for starters
 model_list = ["xlm-r-large", "sloberta", "csebert", "xlm-r-base", "bertic"]
 
 for model in model_list:
-    for run in list(range(5)):
+    for run in list(range(2)):
         current_results_dict = train_and_test(model, train_df, test_df, dataset_path)
 
         # Add to the dict model name, dataset name and run

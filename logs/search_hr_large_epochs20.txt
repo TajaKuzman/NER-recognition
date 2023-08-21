@@ -1,21 +1,134 @@
-[{'eval_loss': 0.04947069858558704, 'precision': 0.8418367346938775, 'recall': 0.8699472759226714, 'f1_score': 0.8556611927398444},
-{'eval_loss': 0.04559025360795438, 'precision': 0.8892763731473409, 'recall': 0.8963093145869947, 'f1_score': 0.8927789934354486},
-{'eval_loss': 0.044992577941130256, 'precision': 0.8784530386740331, 'recall': 0.9081722319859402, 'f1_score': 0.8930654569021386},
-{'eval_loss': 0.05298199515011653, 'precision': 0.8963254593175853, 'recall': 0.9002636203866432, 'f1_score': 0.8982902235861465},
-{'eval_loss': 0.04821510572234475, 'precision': 0.9044117647058824, 'recall': 0.9187170474516696, 'f1_score': 0.9115082824760244},
-{'eval_loss': 0.052534596600303726, 'precision': 0.9002150537634409, 'recall': 0.9195957820738138, 'f1_score': 0.9098022169093676},
-{'eval_loss': 0.053472109734597636, 'precision': 0.9148843299869053, 'recall': 0.9209138840070299, 'f1_score': 0.917889205167506},
-{'eval_loss': 0.06289591914481703, 'precision': 0.9135371179039301, 'recall': 0.9191564147627417, 'f1_score': 0.9163381515549716},
-{'eval_loss': 0.06237966612939733, 'precision': 0.9146341463414634, 'recall': 0.9226713532513181, 'f1_score': 0.9186351706036746},
-{'eval_loss': 0.06747574455810454, 'precision': 0.903713298791019, 'recall': 0.9195957820738138, 'f1_score': 0.9115853658536587},
-{'eval_loss': 0.07116851101178931, 'precision': 0.9136659436008677, 'recall': 0.9253075571177505, 'f1_score': 0.9194499017681729},
-{'eval_loss': 0.0756014817780726, 'precision': 0.9183943537715042, 'recall': 0.9147627416520211, 'f1_score': 0.9165749504732555},
-{'eval_loss': 0.07381511250756098, 'precision': 0.9097222222222222, 'recall': 0.9209138840070299, 'f1_score': 0.9152838427947598},
-{'eval_loss': 0.07525778177354758, 'precision': 0.9129483814523185, 'recall': 0.9169595782073814, 'f1_score': 0.9149495835160018},
-{'eval_loss': 0.07595198840414168, 'precision': 0.9158307893589185, 'recall': 0.9226713532513181, 'f1_score': 0.9192383453709783},
-{'eval_loss': 0.07892714260681412, 'precision': 0.9130244755244755, 'recall': 0.9178383128295254, 'f1_score': 0.9154250657318141},
-{'eval_loss': 0.08032927137616842, 'precision': 0.9126256006989952, 'recall': 0.9178383128295254, 'f1_score': 0.9152245345016429},
-{'eval_loss': 0.08186180514490349, 'precision': 0.90995670995671, 'recall': 0.9235500878734623, 'f1_score': 0.9167030091583079},
-{'eval_loss': 0.08109830444632711, 'precision': 0.9145597210113339, 'recall': 0.9217926186291739, 'f1_score': 0.9181619256017504},
-{'eval_loss': 0.08150108419519506, 'precision': 0.9161572052401746, 'recall': 0.9217926186291739, 'f1_score': 0.9189662724485326}
-]
+wandb: Currently logged in as: tajak. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at xlm-roberta-large were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.weight', 'lm_head.dense.bias']
+- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at xlm-roberta-large and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc', 'I-deriv-per']
+(398681, 3) (51190, 3) (49764, 3)
+     sentence_id      words labels
+717            0      Kazna      O
+718            0  medijskom      O
+719            0     mogulu      O
+720            0   obnovila      O
+721            0   raspravu      O
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230818_145631-chmu0eh9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pious-smoke-99
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/chmu0eh9
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04959061524654451, 'precision': 0.8353380340107839, 'recall': 0.8848857644991213, 'f1_score': 0.8593983358224877}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.03912105213039409, 'precision': 0.8784013605442177, 'recall': 0.9077328646748682, 'f1_score': 0.8928262748487468}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04155510486765168, 'precision': 0.8958063121487246, 'recall': 0.9103690685413005, 'f1_score': 0.9030289823490957}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.044616106435548766, 'precision': 0.8937177280550774, 'recall': 0.9125659050966608, 'f1_score': 0.9030434782608695}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05044314979757801, 'precision': 0.9095258808177469, 'recall': 0.9187170474516696, 'f1_score': 0.9140983606557378}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.057318915511453905, 'precision': 0.9016890428757037, 'recall': 0.9147627416520211, 'f1_score': 0.9081788440567067}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.059088415122560155, 'precision': 0.8959760273972602, 'recall': 0.9195957820738138, 'f1_score': 0.9076322636600174}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06430093684267812, 'precision': 0.9022068368671571, 'recall': 0.9160808435852372, 'f1_score': 0.9090909090909092}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0685529772347506, 'precision': 0.9103178058336961, 'recall': 0.9187170474516696, 'f1_score': 0.9144981412639406}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07182094223268613, 'precision': 0.9008158007728639, 'recall': 0.9217926186291739, 'f1_score': 0.9111834961997829}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0691336678674831, 'precision': 0.9135534317984362, 'recall': 0.9239894551845342, 'f1_score': 0.9187418086500655}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06946164090046351, 'precision': 0.9194748358862145, 'recall': 0.9231107205623902, 'f1_score': 0.9212891909668932}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07671916291387847, 'precision': 0.9098005203816132, 'recall': 0.9217926186291739, 'f1_score': 0.9157573112178088}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08147922550031228, 'precision': 0.9092881944444444, 'recall': 0.9204745166959578, 'f1_score': 0.9148471615720525}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08550524396311328, 'precision': 0.9150984682713348, 'recall': 0.9187170474516696, 'f1_score': 0.9169041876781409}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08555951940345542, 'precision': 0.9135371179039301, 'recall': 0.9191564147627417, 'f1_score': 0.9163381515549716}
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+    self._run()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self._record_writer.write(data)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+    self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: b'runs/Aug18_14-56-31_kt-gpu2/events.out.tfevents.1692363391.kt-gpu2.2499262.0'
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: 
+wandb: Run history:
+wandb: Training loss █▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss ▃▁▁▂▃▄▄▅▅▆▆▆▇▇██
+wandb:      f1_score ▁▅▆▆▇▇▆▇▇▇██▇▇█▇
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▁▃▆███▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▄▃▃▃▃▃▃▂▂▂▂▂
+wandb:     precision ▁▅▆▆▇▇▆▇▇▆██▇▇██
+wandb:        recall ▁▅▆▆▇▆▇▇▇████▇▇▇
+wandb:    train_loss █▄▂▁▁▁▁▁▁▂▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.00058
+wandb:     eval_loss 0.08556
+wandb:      f1_score 0.91634
+wandb:   global_step 9950
+wandb:            lr 0.0
+wandb:     precision 0.91354
+wandb:        recall 0.91916
+wandb:    train_loss 1e-05
+wandb: 
+wandb: 🚀 View run pious-smoke-99 at: https://wandb.ai/tajak/NER/runs/chmu0eh9
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v2
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230818_145631-chmu0eh9/logs
+Traceback (most recent call last):
+  File "hyperparameter_search.py", line 108, in <module>
+    current_model.train_model(train_df,eval_df=dev_df)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py", line 513, in train_model
+    global_step, training_details = self.train(
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py", line 839, in train
+    tb_writer.add_scalar(
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/utils/tensorboard/writer.py", line 391, in add_scalar
+    self._get_file_writer().add_summary(summary, global_step, walltime)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/utils/tensorboard/writer.py", line 113, in add_summary
+    self.add_event(event, global_step, walltime)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/utils/tensorboard/writer.py", line 98, in add_event
+    self.event_writer.add_event(event)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 117, in add_event
+    self._async_writer.write(event.SerializeToString())
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 171, in write
+    self._check_worker_status()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 212, in _check_worker_status
+    raise exception
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
+    self._run()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
+    self._record_writer.write(data)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
+    self._writer.write(header + header_crc + data + footer_crc)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 773, in write
+    self.fs.append(self.filename, file_content, self.binary_mode)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
+    self._write(filename, file_content, "ab" if binary_mode else "a")
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
+    with io.open(filename, mode, encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: b'runs/Aug18_14-56-31_kt-gpu2/events.out.tfevents.1692363391.kt-gpu2.2499262.0'

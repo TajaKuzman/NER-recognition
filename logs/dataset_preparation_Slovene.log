@@ -1,0 +1,168 @@
+Processing dataset: s_Slovene
+Downloaded and extracted 'Slovenian Training corpus SUK 1.0' successfully.
+Processing dataset: ns_Slovene
+Downloaded and extracted 'Slovenian CMC training corpus Janes-Tag 3.0 ' successfully.
+Processing dataset: s_Slovene
+              sentence_id    words labels    doc_ids  split
+0  elexiswsd1.1.sl.130814        V      O  elexiswsd  train
+1  elexiswsd1.1.sl.130814     peti      O  elexiswsd  train
+2  elexiswsd1.1.sl.130814   sezoni      O  elexiswsd  train
+3  elexiswsd1.1.sl.130814       so      O  elexiswsd  train
+4  elexiswsd1.1.sl.130814  program      O  elexiswsd  train
+
+
+                      sentence_id  words labels    doc_ids  split
+count                       31233  31233  31233      31233  31233
+unique                       2024  10961     10          1      3
+top     elexiswsd1.1416.sl.132238      .      O  elexiswsd  train
+freq                           44   2019  28508      31233  24975
+
+
+split
+train    0.799635
+test     0.102392
+dev      0.097973
+Name: proportion, dtype: float64
+
+
+labels
+O              0.912753
+B-loc          0.022668
+B-per          0.015753
+I-misc         0.009765
+B-org          0.008677
+B-misc         0.008196
+I-org          0.008036
+I-per          0.007748
+I-loc          0.005059
+B-deriv-per    0.001345
+Name: proportion, dtype: float64
+
+
+
+
+Extracted dataset saved as datasets/SUK.CoNLL-U/elexiswsd.ud.conllu_extracted.json
+       sentence_id     words labels      doc_ids  split
+0  senticoref1.1.1  Evropska  B-org  senticoref1  train
+1  senticoref1.1.1  komisija  I-org  senticoref1  train
+2  senticoref1.1.1      mora      O  senticoref1  train
+3  senticoref1.1.1  narediti      O  senticoref1  train
+4  senticoref1.1.1   analizo      O  senticoref1  train
+
+
+               sentence_id   words  labels         doc_ids   split
+count               391962  391962  391962          391962  391962
+unique               18142   41375      11             756       3
+top     senticoref8298.1.3       ,       O  senticoref1866   train
+freq                   172   26072  350085            1163  311421
+
+
+split
+train    0.794518
+test     0.106870
+dev      0.098612
+Name: proportion, dtype: float64
+
+
+labels
+O              0.893161
+B-org          0.031220
+B-per          0.019211
+I-org          0.018879
+B-loc          0.017675
+I-per          0.011448
+I-misc         0.002669
+B-misc         0.002618
+I-loc          0.002189
+B-deriv-per    0.000926
+I-deriv-per    0.000005
+Name: proportion, dtype: float64
+
+
+
+
+Extracted dataset saved as datasets/SUK.CoNLL-U/senticoref.ud.conllu_extracted.json
+  sentence_id    words labels doc_ids  split
+0    ssj1.1.1        "      O    ssj1  train
+1    ssj1.1.1  Tistega      O    ssj1  train
+2    ssj1.1.1   večera      O    ssj1  train
+3    ssj1.1.1      sem      O    ssj1  train
+4    ssj1.1.1   preveč      O    ssj1  train
+
+
+             sentence_id   words  labels doc_ids   split
+count             235864  235864  235864  235864  235864
+unique             11411   48714      11     617       3
+top     ssj531.2796.9962       ,       O  ssj142   train
+freq                 232   17551  224568    2979  190669
+
+
+split
+train    0.808385
+dev      0.101575
+test     0.090039
+Name: proportion, dtype: float64
+
+
+labels
+O              0.952108
+B-per          0.012414
+B-loc          0.008340
+I-per          0.005872
+B-org          0.005749
+I-org          0.005558
+I-misc         0.004617
+B-misc         0.002552
+I-loc          0.002090
+B-deriv-per    0.000691
+I-deriv-per    0.000008
+Name: proportion, dtype: float64
+
+
+
+
+Extracted dataset saved as datasets/SUK.CoNLL-U/ssj500k-syn.ud.conllu_extracted.json
+Processing dataset: ns_Slovene
+                sentence_id             words  ...                 doc_ids  split
+0  tid.519476716902051840.1  @PrinasalkaZlata  ...  tid.519476716902051840  train
+1  tid.519476716902051840.1                :D  ...  tid.519476716902051840  train
+2  tid.519476716902051840.1                jp  ...  tid.519476716902051840  train
+3  tid.519476716902051840.1               res  ...  tid.519476716902051840  train
+4  tid.519476716902051840.1                 ,  ...  tid.519476716902051840  train
+
+[5 rows x 5 columns]
+
+
+                          sentence_id  ...  split
+count                           75926  ...  75926
+unique                           7781  ...      3
+top     janes.news.reporter.27057.6.1  ...  train
+freq                               54  ...  60751
+
+[4 rows x 5 columns]
+
+
+split
+train    0.800134
+test     0.101625
+dev      0.098240
+Name: proportion, dtype: float64
+
+
+labels
+O              0.931986
+B-per          0.046638
+B-org          0.006282
+B-loc          0.005426
+B-misc         0.004373
+I-misc         0.002002
+I-per          0.001383
+I-org          0.001067
+B-deriv-per    0.000500
+I-loc          0.000342
+Name: proportion, dtype: float64
+
+
+
+
+Extracted dataset saved as datasets/Janes-Tag.3.0.CoNLL-U/janes-tag.ud.conllu_extracted.json

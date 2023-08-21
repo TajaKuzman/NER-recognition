@@ -3,3 +3,5 @@
 /runs
 /outputs
 /ner
+/logs/datasets
+/figures/cm-datasets

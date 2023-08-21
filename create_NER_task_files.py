@@ -20,6 +20,7 @@ def extract_ner_dataset(scenario):
     import pandas as pd
     import numpy as np
     import json
+    import random
 
     datasets = {
     "s_Slovene": {
@@ -65,12 +66,19 @@ def extract_ner_dataset(scenario):
         sent_id_list = []
         NER_list = []
         split_list = []
+        doc_list = []
 
         # Slovene corpora are not split into train, dev, test splits and have NER information under different keys than Croatian and Serbian
         if "Slovene" in scenario:
             # Collect all important information from the dataset
             for sentence in sentences:
                 current_sent_id = sentence.metadata["sent_id"]
+
+            # Extract doc_ids and create a list of doc_ids
+                if sentence.metadata.get("newdoc id", None) != None:
+                    current_doc_id = sentence.metadata["newdoc id"]
+                # If sentence does not have a new doc id, use the one from the previous sentence that has it
+
                 for token in sentence:
                     current_word = token["form"]
                     current_ner = token["misc"]["NER"]
@@ -78,9 +86,10 @@ def extract_ner_dataset(scenario):
                     word_list.append(current_word)
                     sent_id_list.append(current_sent_id)
                     NER_list.append(current_ner)
+                    doc_list.append(current_doc_id)
 
             # Create a dictionary for all words and all needed information
-            data_dict = {"sentence_id": sent_id_list, "words": word_list, "labels": NER_list}
+            data_dict = {"sentence_id": sent_id_list, "words": word_list, "labels": NER_list, "doc_ids": doc_list}
 
             # Create a pandas df out of the dictionary
             df = pd.DataFrame(data_dict)
@@ -92,10 +101,64 @@ def extract_ner_dataset(scenario):
 
                 df["labels"] = np.where(df["labels"] == "*", "O", df["labels"])
 
+            # Create splits - random 80:10:10 splits based on doc ids/sentence ids
+
+            # Set a random seed for reproducibility
+            random_seed = 42
+            random.seed(random_seed)
+
+            if "elexiswsd" in dataset:
+                # Split the dataset based on sentence ids in a 80:10:10 ratio - elexis wsd does not have doc ids
+                sen_ids = list(df["sentence_id"].unique())
+
+                # Shuffle the sen_ids randomly
+                random.shuffle(sen_ids)
+
+                # Calculate the number of sen_ids for each split
+                total_sents = len(sen_ids)
+                train_size = int(0.8 * total_sents)
+                test_size = int(0.1 * total_sents)
+
+                # Split the shuffled doc_ids into train, test, and dev sets
+                train_ids = sen_ids[:train_size]
+                test_ids = sen_ids[train_size:train_size + test_size]
+                dev_ids = sen_ids[train_size + test_size:]
+
+                # Apply this to the dataset
+                df["split"] = ""
+                df["split"] = np.where(df['sentence_id'].isin(train_ids), "train", df["split"])
+                df["split"] = np.where(df['sentence_id'].isin(test_ids), "test", df["split"])
+                df["split"] = np.where(df['sentence_id'].isin(dev_ids), "dev", df["split"])
+
+            else:
+                # Split the dataset based on doc ids in a 80:10:10 ratio
+                doc_ids = list(df["doc_ids"].unique())
+
+                # Shuffle the doc_ids randomly
+                random.shuffle(doc_ids)
+
+                # Calculate the number of doc_ids for each split
+                total_docs = len(doc_ids)
+                train_size = int(0.8 * total_docs)
+                test_size = int(0.1 * total_docs)
+
+                # Split the shuffled doc_ids into train, test, and dev sets
+                train_ids = doc_ids[:train_size]
+                test_ids = doc_ids[train_size:train_size + test_size]
+                dev_ids = doc_ids[train_size + test_size:]
+
+                # Apply this to the dataset
+                df["split"] = ""
+                df["split"] = np.where(df['doc_ids'].isin(train_ids), "train", df["split"])
+                df["split"] = np.where(df['doc_ids'].isin(test_ids), "test", df["split"])
+                df["split"] = np.where(df['doc_ids'].isin(dev_ids), "dev", df["split"])
+
             # Show the df
             print(df.head())
             print("\n")
             print(df.describe(include="all"))
+            print("\n")
+            print(df.split.value_counts(normalize=True))
             print("\n")
             print(df.labels.value_counts(normalize=True))
             print("\n")
@@ -103,7 +166,9 @@ def extract_ner_dataset(scenario):
             # Save the information in a format that will be used by simpletransformers
             json_dict = {
                 "labels": LABELS,
-                "dataset": df.to_dict()
+                "train": df[df["split"] == "train"].drop(columns=["split", "doc_ids"]).to_dict(),
+                "dev": df[df["split"] == "dev"].drop(columns=["split", "doc_ids"]).to_dict(),
+                "test": df[df["split"] == "test"].drop(columns=["split", "doc_ids"]).to_dict()
             }
 
     # Code for Serbian and Croatian corpora

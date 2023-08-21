@@ -1,20 +1,92 @@
-{'eval_loss': 0.0616142503367707, 'precision': 0.768788501026694, 'recall': 0.8224956063268892, 'f1_score': 0.7947357248991721},
-{'eval_loss': 0.04836676621069747, 'precision': 0.8271186440677966, 'recall': 0.8576449912126538, 'f1_score': 0.8421052631578947},
-{'eval_loss': 0.04860940881573574, 'precision': 0.8672719412019023, 'recall': 0.8813708260105448, 'f1_score': 0.8742645456526477},
-{'eval_loss': 0.04600378259580071, 'precision': 0.8843597696056712, 'recall': 0.8769771528998243, 'f1_score': 0.8806529891903815},
-{'eval_loss': 0.04437410024971172, 'precision': 0.8704506065857885, 'recall': 0.882688927943761, 'f1_score': 0.8765270506108201},
-{'eval_loss': 0.049452597498614866, 'precision': 0.8728595890410958, 'recall': 0.8958699472759226, 'f1_score': 0.8842150910667823},
-{'eval_loss': 0.04905012917702868, 'precision': 0.8720238095238095, 'recall': 0.9011423550087874, 'f1_score': 0.8863439930855661},
-{'eval_loss': 0.05524313373291278, 'precision': 0.8877729257641921, 'recall': 0.8932337434094904, 'f1_score': 0.8904949627682873},
-{'eval_loss': 0.06209575571795911, 'precision': 0.8826574633304572, 'recall': 0.8989455184534271, 'f1_score': 0.890727035263387},
-{'eval_loss': 0.05729625540213311, 'precision': 0.8749464668094219, 'recall': 0.8976274165202109, 'f1_score': 0.8861418347430059},
-{'eval_loss': 0.06557390937589894, 'precision': 0.8814878892733564, 'recall': 0.8954305799648506, 'f1_score': 0.8884045335658239},
-{'eval_loss': 0.06600697025026499, 'precision': 0.883419689119171, 'recall': 0.8989455184534271, 'f1_score': 0.8911149825783973},
-{'eval_loss': 0.06768790145101293, 'precision': 0.8822000866175834, 'recall': 0.8949912126537786, 'f1_score': 0.8885496183206106},
-{'eval_loss': 0.07032090057765956, 'precision': 0.8811795316565482, 'recall': 0.8927943760984183, 'f1_score': 0.8869489305979922},
-{'eval_loss': 0.07005031974489219, 'precision': 0.8839324382849718, 'recall': 0.8967486818980668, 'f1_score': 0.8902944383860414},
-{'eval_loss': 0.07205792211114859, 'precision': 0.8690629011553274, 'recall': 0.8923550087873462, 'f1_score': 0.8805549533925862},
-{'eval_loss': 0.07397056205533868, 'precision': 0.8807775377969762, 'recall': 0.8958699472759226, 'f1_score': 0.8882596384230015},
-{'eval_loss': 0.07312465486756407, 'precision': 0.8832179930795848, 'recall': 0.8971880492091389, 'f1_score': 0.8901482127288578},
-{'eval_loss': 0.07293132929850925, 'precision': 0.8847647820457488, 'recall': 0.9007029876977153, 'f1_score': 0.8926627476594818},
-{'eval_loss': 0.07271996452451346, 'precision': 0.881896551724138, 'recall': 0.8989455184534271, 'f1_score': 0.8903394255874674}
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForTokenClassification: ['lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.bias', 'lm_head.dense.bias', 'lm_head.dense.weight']
+- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc', 'I-deriv-per']
+(398681, 3) (51190, 3) (49764, 3)
+     sentence_id      words labels
+717            0      Kazna      O
+718            0  medijskom      O
+719            0     mogulu      O
+720            0   obnovila      O
+721            0   raspravu      O
+wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230818_145554-vfkndg1c
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run apricot-deluge-98
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/vfkndg1c
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06064973203607586, 'precision': 0.7841053973650659, 'recall': 0.8106326889279437, 'f1_score': 0.797148412184057}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04559406516756271, 'precision': 0.8296795952782462, 'recall': 0.8646748681898067, 'f1_score': 0.846815834767642}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04330383693198397, 'precision': 0.86504895700298, 'recall': 0.8927943760984183, 'f1_score': 0.8787027027027027}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04381919328555771, 'precision': 0.8812392426850258, 'recall': 0.8998242530755711, 'f1_score': 0.8904347826086956}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04824897590542225, 'precision': 0.8733246865542585, 'recall': 0.8875219683655536, 'f1_score': 0.8803660928306821}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05303227805299123, 'precision': 0.8607007176023639, 'recall': 0.8958699472759226, 'f1_score': 0.8779332615715822}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.054511126292019214, 'precision': 0.8771021992238034, 'recall': 0.8936731107205624, 'f1_score': 0.8853101196953211}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.056299872610971524, 'precision': 0.8788010425716768, 'recall': 0.8888400702987698, 'f1_score': 0.8837920489296636}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05901674974157829, 'precision': 0.895271763146266, 'recall': 0.8901581722319859, 'f1_score': 0.8927076448556951}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06091289680097627, 'precision': 0.8881149325206792, 'recall': 0.8963093145869947, 'f1_score': 0.892193308550186}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06397947710436394, 'precision': 0.8858506944444444, 'recall': 0.8967486818980668, 'f1_score': 0.8912663755458515}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0667538375766169, 'precision': 0.8820490744726647, 'recall': 0.9002636203866432, 'f1_score': 0.8910632746249184}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06690891064013114, 'precision': 0.8898047722342733, 'recall': 0.9011423550087874, 'f1_score': 0.8954376773630213}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07027268093144133, 'precision': 0.8989059080962801, 'recall': 0.9024604569420035, 'f1_score': 0.9006796755097566}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07322656469221626, 'precision': 0.8822510822510823, 'recall': 0.8954305799648506, 'f1_score': 0.8887919755778456}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07288144342473794, 'precision': 0.8937282229965157, 'recall': 0.9015817223198594, 'f1_score': 0.8976377952755906}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07287943521011009, 'precision': 0.8870056497175142, 'recall': 0.8967486818980668, 'f1_score': 0.8918505571334937}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07309129727146592, 'precision': 0.8921270117442366, 'recall': 0.9011423550087874, 'f1_score': 0.8966120218579234}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07380984823035977, 'precision': 0.8916920400173989, 'recall': 0.9007029876977153, 'f1_score': 0.8961748633879781}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07436680862879418, 'precision': 0.8906318082788671, 'recall': 0.8980667838312829, 'f1_score': 0.8943338437978561}
+INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb: Training loss █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss ▅▂▁▁▂▃▄▄▅▅▆▆▆▇██████
+wandb:      f1_score ▁▄▇▇▇▆▇▇▇▇▇▇██▇█▇███
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:            lr ▂▅████▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:     precision ▁▄▆▇▆▆▇▇█▇▇▇▇█▇█▇██▇
+wandb:        recall ▁▅▇█▇▇▇▇▇█████▇█████
+wandb:    train_loss █▄▂▁▂▁▁▁▂▁▁▁▁▁▁▁▃▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.00047
+wandb:     eval_loss 0.07437
+wandb:      f1_score 0.89433
+wandb:   global_step 12380
+wandb:            lr 0.0
+wandb:     precision 0.89063
+wandb:        recall 0.89807
+wandb:    train_loss 0.0001
+wandb: 
+wandb: 🚀 View run apricot-deluge-98 at: https://wandb.ai/tajak/NER/runs/vfkndg1c
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v1
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230818_145554-vfkndg1c/logs

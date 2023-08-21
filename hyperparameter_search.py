@@ -9,6 +9,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import logging
 import sklearn
 from numba import cuda
+import argparse
 
 logging.basicConfig(level=logging.INFO)
 transformers_logger = logging.getLogger("transformers")
@@ -16,6 +17,11 @@ transformers_logger.setLevel(logging.WARNING)
 
 # Login to wandb
 wandb.login()
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-ln", "--lm_name", type=str, default="xlm-r-base", required=True, help="LM model to use for hyperparameter search: xlm-r-base or xlm-r-large")
+args = parser.parse_args()
 
 # Import the dataset
 
@@ -30,6 +36,12 @@ with open(dataset_path, "r") as file:
 train_df = pd.DataFrame(json_dict["train"])
 test_df = pd.DataFrame(json_dict["test"])
 dev_df = pd.DataFrame(json_dict["dev"])
+
+# Change the sentence_ids to numbers
+test_df['sentence_id'] = pd.factorize(test_df['sentence_id'])[0]
+train_df['sentence_id'] = pd.factorize(train_df['sentence_id'])[0]
+dev_df['sentence_id'] = pd.factorize(dev_df['sentence_id'])[0]
+
 
 # Define the labels
 LABELS = json_dict["labels"]
@@ -84,7 +96,7 @@ model_args ={"overwrite_output_dir": True,
 
 
 # Choose the model
-current_model_name = "xlm-r-base"
+current_model_name = args.lm_name
 
 current_model = NERModel(
     model_type_dict[current_model_name][0],

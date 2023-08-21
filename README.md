@@ -8,6 +8,7 @@ An evaluation of various encoder Transformer-based large language models on the 
  - standard Serbian
  - non-standard Serbian
 
+
 ## Dataset preparation
 
 To download the datasets from the CLARIN.SI repository and prepare JSON files which will be used as train, dev and test files for classification with the simpletransformers library, run the following command in the command line:
@@ -20,13 +21,14 @@ You can use all available datasets or define just a couple of them as the argume
 
 Extracted JSON files are dictionaries which consist of the following keys:
  - "labels" (list of NE labels used in the dataset)
- - "train", "dev", "test" (dataset splits - in case of Croatian and Serbian datasets)
- - "dataset" (in case of Slovenian datasets which are not separated into splits)
+ - "train", "dev", "test" (dataset splits)
 
 "train", "dev", "test" and "dataset" are also dictionaries, with the following keys:
  - "sentence_id" (original sentence id)
  - "words" (word forms)
  - "labels" (NE labels)
+
+Croatian and Serbian datasets already have information on splits, so we split them according to the original splits. The Slovenian datasets are originally not split into train, dev and test subset - we split them in 80:10:10 train-dev-test ratio according to doc ids (we extract doc ids and randomly split them into train-dev-test). The Slovenian Elexis WSD dataset does not have doc ids (and sentences are not connected), so we split them according to sentence ids.
 
 To use them for classification with the simpletransformers library:
 ```
@@ -51,9 +53,9 @@ dev_df = pd.DataFrame(json_dict["dev"])
 
 ### Hyperparameter search for XLM-R-Large
 
-Code (change in the code the number of epochs you want to run - line 53 - and whether the xlm-r model is base or large - line 87):
+Code (change in the code the number of epochs you want to run - line 53 - and add argument whether the xlm-r model is base or large: xlm-r-base / xlm-r-large):
 ```
-CUDA_VISIBLE_DEVICES=1 nohup python hyperparameter_search.py > search_hr_base_epochs20.txt &
+CUDA_VISIBLE_DEVICES=1 nohup python hyperparameter_search.py -ln xlm-r-base > search_hr_base_epochs20.txt &
 ```
 
 I performed it on standard HR dataset (hr500k).
@@ -83,15 +85,15 @@ model_args ={"overwrite_output_dir": True,
 
 I searched for the optimum no. of epochs by training the model for 20 epochs and then evaluating during training. Then I inspected how the evaluation loss falls during training and did a more fine-grained evaluation by training the model again on a couple of most promising epochs.
 
-Based on the training loss, evaluation loss and f1 score, the optimum no. of epochs is *7* for large models and *8* for base models (afterwards, f1 plateaus and evaluation loss rises).
+Based on the training loss, evaluation loss and f1 score, the optimum no. of epochs is *5* for large models and *9* for base models (afterwards, f1 plateaus and evaluation loss rises).
 
 Hyperparameter search for XLM-R-large:
 
-![](figures/xlm-r-l-hr-hyperparameter-search-epoch7.png)
+![](figures/xlm-r-l-hr-hyperparameter-search-epoch5.png)
 
 Hyperparameter search for XLM-R-base:
 
-![](figures/xlm-r-base-hr-hyperparameter-search-epoch8.png)
+![](figures/xlm-r-base-hr-hyperparameter-search-epoch9.png)
 
 ### Hyperparameters used for XLM-R-large models
 
@@ -117,7 +119,7 @@ Including SloBERTa, BERTić, CSEBERT.
 
 ```
 model_args ={"overwrite_output_dir": True,
-             "num_train_epochs": 8,
+             "num_train_epochs": 9,
              "labels_list": LABELS,
              "learning_rate": 1e-5,
              "train_batch_size": 32,
@@ -138,3 +140,15 @@ For each dataset, run the following code (with the path to the extracted dataset
 ```
 CUDA_VISIBLE_DEVICES=1 nohup python ner-classification.py datasets/hr500k.conllup_extracted.json > ner_classification.log &
 ```
+
+To run Nikola's code (move to folder Nikola-code):
+```
+CUDA_VISIBLE_DEVICES=3 nohup python finetune_arged.py -ln xlm-r-base > ner_classification_Nikola_code.log &
+```
+
+Model's evaluated on:
+- Croatian standard
+- Croatian non-standard
+- Serbian non-standard
+- Serbian standard
+- Slovenian standard: elexiswsd

@@ -38,6 +38,11 @@ train_df = pd.DataFrame(json_dict["train"])
 test_df = pd.DataFrame(json_dict["test"])
 dev_df = pd.DataFrame(json_dict["dev"])
 
+# Change the sentence_ids to numbers
+test_df['sentence_id'] = pd.factorize(test_df['sentence_id'])[0]
+train_df['sentence_id'] = pd.factorize(train_df['sentence_id'])[0]
+dev_df['sentence_id'] = pd.factorize(dev_df['sentence_id'])[0]
+
 # Define the labels
 LABELS = json_dict["labels"]
 print(LABELS)
@@ -45,17 +50,14 @@ print(LABELS)
 print(train_df.shape, test_df.shape, dev_df.shape)
 print(train_df.head())
 
-def train_and_test(model, train_df, test_df, dataset_path):
-
-    # Set up the model's arguments
-    model_args = NERArgs()
+def train_and_test(model, train_df, test_df, dataset_path, LABELS):
 
     # Define the model
 
     # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
     # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before)
     xlm_r_large_args = {"overwrite_output_dir": True,
-                "num_train_epochs": 7,
+                "num_train_epochs": 5,
                 "labels_list": LABELS,
                 "learning_rate": 1e-5,
                 "train_batch_size": 32,
@@ -68,7 +70,7 @@ def train_and_test(model, train_df, test_df, dataset_path):
                 }
 
     xlm_r_base_args = {"overwrite_output_dir": True,
-             "num_train_epochs": 8,
+             "num_train_epochs": 9,
              "labels_list": LABELS,
              "learning_rate": 1e-5,
              "train_batch_size": 32,
@@ -88,7 +90,8 @@ def train_and_test(model, train_df, test_df, dataset_path):
         "csebert": ["bert", "EMBEDDIA/crosloengual-bert", xlm_r_base_args],
         "xlm-r-base": ["xlmroberta", "xlm-roberta-base", xlm_r_base_args],
         "xlm-r-large": ["xlmroberta", "xlm-roberta-large", xlm_r_large_args],
-        "bertic": ["electra", "classla/bcms-bertic", xlm_r_base_args]
+        "bertic": ["electra", "classla/bcms-bertic", xlm_r_base_args],
+        "xlmrl_bcms_48000": ["xlmroberta", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000", xlm_r_large_args]
     }
 
     # Update the hyperparameters accordingly to the model
@@ -98,6 +101,7 @@ def train_and_test(model, train_df, test_df, dataset_path):
     current_model = NERModel(
     model_type_dict[model][0],
     model_type_dict[model][1],
+    labels = LABELS,
     use_cuda=True,
     args = model_args)
 
@@ -167,10 +171,11 @@ def train_and_test(model, train_df, test_df, dataset_path):
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
 model_list = ["xlm-r-large", "sloberta", "csebert", "xlm-r-base", "bertic"]
+#model_list = ["xlmrl_bcms_48000"]
 
 for model in model_list:
     for run in list(range(2)):
-        current_results_dict = train_and_test(model, train_df, test_df, dataset_path)
+        current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS)
 
         # Add to the dict model name, dataset name and run
         current_results_dict["model"] = model
@@ -184,11 +189,31 @@ for model in model_list:
         # Add to the original test_df y_preds
         test_df["y_pred_{}_{}".format(model, run)] = current_results_dict["y_pred"]
 
-        # Save entire dict just in case
-        with open("{}-{}-{}-backlog.json".format(dataset_path,model,run), "w") as backlog:
-            json.dump(current_results_dict, backlog, indent=2)
+        # Save also y_pred and y_true
+        with open("logs/{}-{}-{}-true-and-pred-backlog.txt".format(dataset_path,model,run), "w") as backlog:
+            backlog.write("y-true\ty-pred\toutputs\n")
+            backlog.write("{}\t{}\t{}\n".format(current_results_dict["y_true"], current_results_dict["y_pred"], current_results_dict["results_output"]))
     
         print("Run {} finished.".format(run))
 
 # At the end, save the test_df with all predictions
 test_df.to_csv("{}-test_df-with-predictions.csv".format(dataset_path))
+
+# At the end, create a csv table with a summary of results
+
+results = pd.read_csv("ner-results.txt", sep="\t")
+
+results["Macro F1"] = results["Macro F1"].round(2)
+
+# Pivot the DataFrame to rearrange columns into rows
+pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
+
+# Rename the columns
+pivot_df.columns = list(results.Dataset.unique())
+
+# Reset the index to have 'Model' as a column
+pivot_df.reset_index(inplace=True)
+
+# Save the summary results
+
+pivot_df.to_csv("ner-results-summary-table.csv")

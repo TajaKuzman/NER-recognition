@@ -256,7 +256,9 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
     return metrics
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
-model_list = base_list
+#model_list = base_list
+model_list = large_list
+
 
 for model_path in model_list:
     # First, save a fine-tuned version that we can use for proper fine-tuning

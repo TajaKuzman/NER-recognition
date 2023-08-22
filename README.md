@@ -151,4 +151,4 @@ Model's evaluated on:
 - Croatian non-standard
 - Serbian non-standard
 - Serbian standard
-- Slovenian standard: elexiswsd
+- Slovenian standard: elexiswsd, senticoref

@@ -208,9 +208,6 @@ results["Macro F1"] = results["Macro F1"].round(2)
 # Pivot the DataFrame to rearrange columns into rows
 pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
 
-# Rename the columns
-pivot_df.columns = list(results.Dataset.unique())
-
 # Reset the index to have 'Model' as a column
 pivot_df.reset_index(inplace=True)
 

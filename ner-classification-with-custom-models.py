@@ -50,6 +50,7 @@ print(LABELS)
 print(train_df.shape, test_df.shape, dev_df.shape)
 print(train_df.head())
 
+# Define the main model arguments
 model_args = {"overwrite_output_dir": True,
             "num_train_epochs": 5,
             "labels_list": LABELS,
@@ -73,17 +74,10 @@ large_list = list(large_dict.keys())
 # Create lists of all needed models for the task
 path_list = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
 
+all_models_list = list(path_list.keys())
+
 def train_and_save_checkpoint(model_path, train_df, LABELS, model_args):
     # When fine-tuning our custom models that we pre-trained, and using them from checkpoints, the process is a bit different than with publicly available models: first, we need to fine-tune a model from the original checkpoint, so that we save the model and overwrite its original settings which force pretraining from a specific step (and disable fine-tuning by that). Then we take that new model and fine-tune it, as we did with the models before. 
-
-
-    # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
-    # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before)
-    if "xlmrb" in model_path:
-        model_args["num_train_epochs"] = 9
-
-    elif "xlmrl" in model_path:
-        model_args["num_train_epochs"] = 5
 
     # Add additional arguments, specific for our own models
     # Specify the folder where we want to save the models
@@ -114,82 +108,42 @@ def train_and_save_checkpoint(model_path, train_df, LABELS, model_args):
     torch.cuda.empty_cache()
 
 # After creating pre-trained model that we can use, train it properly
-def train_and_test(model, train_df, test_df, dataset_path, LABELS):
+def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
 
     # Define the model
 
     # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
-    # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before)
-    xlm_r_large_args = {"overwrite_output_dir": True,
-                "num_train_epochs": 5,
-                "labels_list": LABELS,
-                "learning_rate": 1e-5,
-                "train_batch_size": 32,
-                # Comment out no_cache and no_save if you want to save the model
-                "no_cache": True,
-                "no_save": True,
-                "max_seq_length": 256,
-                "save_steps": -1,
-                "silent": True,
-                }
+    # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before).
+    # Args also depend on the dataset.
 
-    xlm_r_base_args = {"overwrite_output_dir": True,
-             "num_train_epochs": 9,
-             "labels_list": LABELS,
-             "learning_rate": 1e-5,
-             "train_batch_size": 32,
-             # Comment out no_cache and no_save if you want to save the model
-             "no_cache": True,
-             "no_save": True,
-             "max_seq_length": 256,
-             "save_steps": -1,
-            "silent": True,
-             }
+    # Define the type of dataset we are using
+    # - when we extend the code for SL, change this
+    dataset_type = "standard"
 
+    if "reldi" in dataset_path:
+        dataset_type = "non_standard"
 
-    # Model type - a dictionary of type and model name.
-    # To refer to our own models, use the path to the model directory as the model name.
-    model_type_dict = {
-        "sloberta": ["camembert", "EMBEDDIA/sloberta", xlm_r_base_args],
-        "csebert": ["bert", "EMBEDDIA/crosloengual-bert", xlm_r_base_args],
-        "xlm-r-base": ["xlmroberta", "xlm-roberta-base", xlm_r_base_args],
-        "xlm-r-large": ["xlmroberta", "xlm-roberta-large", xlm_r_large_args],
-        "bertic": ["electra", "classla/bcms-bertic", xlm_r_base_args]
-    }
+    # Change no. of epochs based on the model and the dataset
+    if dataset_type == "standard":
+        # If the model is based on XLM-R-base, use the same arg as XLM-R-base
+        if "xlmrb" in model:
+            model_args["num_train_epochs"] = 9
+        # If the model is based on XLM-R-large, use the same arg as XLM-R-large
+        elif "xlmrl" in model:
+            model_args["num_train_epochs"] = 5
+    elif dataset_type == "non_standard":
+        if "xlmrb" in model:
+            model_args["num_train_epochs"] = 11
+        elif "xlmrl" in model:
+            model_args["num_train_epochs"] = 7
 
-    if "xlmrb" in model:
-        model_args = xlm_r_base_args
-
-        # Define the model
-        current_model = NERModel(
-        "xlmroberta",
-        "models/",
-        labels = LABELS,
-        use_cuda=True,
-        args = model_args)
-
-    elif "xlmrl" in model:
-        model_args = xlm_r_large_args
-
-        # Define the model
-        current_model = NERModel(
-        "xlmroberta",
-        "models/",
-        labels = LABELS,
-        use_cuda=True,
-        args = model_args)
-
-    else:
-        # Update the hyperparameters accordingly to the model
-        model_args = model_type_dict[model][2]
-
-        # Define the model
-        current_model = NERModel(
-        model_type_dict[model][0],
-        model_type_dict[model][1],
-        labels = LABELS,
-        use_cuda=True,
-        args = model_args)
+    # Define the model
+    current_model = NERModel(
+    "xlmroberta",
+    "models/",
+    labels = LABELS,
+    use_cuda=True,
+    args = model_args)
 
     print("Training started. Current model: {}".format(model))
     start_time = time.time()
@@ -257,7 +211,8 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
 #model_list = base_list
-model_list = large_list
+#model_list = large_list
+model_list = all_models_list
 
 
 for model_path in model_list:
@@ -266,7 +221,7 @@ for model_path in model_list:
     model = path_list[model_path]
     # Then do multiple runs with this model
     for run in list(range(2)):
-        current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS)
+        current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args)
 
         # Add to the dict model name, dataset name and run
         current_results_dict["model"] = model
@@ -274,7 +229,7 @@ for model_path in model_list:
         current_results_dict["dataset"] = dataset_path
 
         # Add to the file with results all important information
-        with open("ner-results.txt", "a") as file:
+        with open("ner-results-our-models.txt", "a") as file:
             file.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), current_results_dict["model"], current_results_dict["run"], current_results_dict["dataset"], current_results_dict["micro F1"], current_results_dict["macro F1"], current_results_dict["label-report"]))
 
         # Add to the original test_df y_preds
@@ -301,11 +256,11 @@ for model_path in model_list:
 
 
 # At the end, save the test_df with all predictions
-test_df.to_csv("{}-test_df-with-predictions.csv".format(dataset_path))
+test_df.to_csv("{}-test_df-with-predictions-custom-models.csv".format(dataset_path))
 
 # At the end, create a csv table with a summary of results
 
-results = pd.read_csv("ner-results.txt", sep="\t")
+results = pd.read_csv("ner-results-our-models.txt", sep="\t")
 
 results["Macro F1"] = results["Macro F1"].round(2)
 
@@ -316,4 +271,4 @@ pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
 pivot_df.reset_index(inplace=True)
 
 # Pivot the DataFrame to rearrange columns into rows
-pivot_df.to_csv("ner-results-summary-table.csv")
+pivot_df.to_csv("ner-results-summary-table-our-models.csv")

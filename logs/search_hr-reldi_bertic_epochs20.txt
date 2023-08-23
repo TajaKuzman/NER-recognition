@@ -1,0 +1,92 @@
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense.weight', 'discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.bias']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
+(71967, 3) (8952, 3) (8936, 3)
+   sentence_id    words labels
+0            0   Vakula  B-per
+1            0    dragi      O
+2            0  Drakula  B-per
+3            0        ,      O
+4            0     kiša      O
+wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230823_113753-niogfovd
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run vocal-resonance-104
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/niogfovd
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.25367088746279476, 'precision': 1.0, 'recall': 0.3132969034608379, 'f1_score': 0.4771151178918169}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.16093251987360419, 'precision': 0.4991596638655462, 'recall': 0.5409836065573771, 'f1_score': 0.5192307692307693}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.13808933580294253, 'precision': 0.6135957066189625, 'recall': 0.6247723132969034, 'f1_score': 0.6191335740072202}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1238410789403133, 'precision': 0.6471544715447154, 'recall': 0.7249544626593807, 'f1_score': 0.683848797250859}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1166765451664105, 'precision': 0.6782884310618067, 'recall': 0.7795992714025501, 'f1_score': 0.7254237288135594}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11442559744464234, 'precision': 0.7314662273476112, 'recall': 0.8087431693989071, 'f1_score': 0.768166089965398}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11009496998041868, 'precision': 0.742998352553542, 'recall': 0.8214936247723132, 'f1_score': 0.7802768166089964}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11241230977699161, 'precision': 0.7978910369068541, 'recall': 0.8269581056466302, 'f1_score': 0.8121645796064401}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11585043155355379, 'precision': 0.8031358885017421, 'recall': 0.8397085610200364, 'f1_score': 0.8210151380231522}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11451834918465466, 'precision': 0.7908163265306123, 'recall': 0.8469945355191257, 'f1_score': 0.8179419525065964}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11555094797862693, 'precision': 0.818815331010453, 'recall': 0.8561020036429873, 'f1_score': 0.8370436331255565}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11721448276890442, 'precision': 0.8121739130434783, 'recall': 0.8506375227686703, 'f1_score': 0.8309608540925267}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11837471348117105, 'precision': 0.8156521739130435, 'recall': 0.8542805100182149, 'f1_score': 0.8345195729537366}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11932562010537368, 'precision': 0.8228070175438597, 'recall': 0.8542805100182149, 'f1_score': 0.8382484361036638}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12013163384282961, 'precision': 0.8177083333333334, 'recall': 0.8579234972677595, 'f1_score': 0.8373333333333334}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12078535024716984, 'precision': 0.8197573656845754, 'recall': 0.8615664845173042, 'f1_score': 0.8401420959147425}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12231842017848976, 'precision': 0.8303886925795053, 'recall': 0.8561020036429873, 'f1_score': 0.8430493273542602}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12361634805856739, 'precision': 0.8274647887323944, 'recall': 0.8561020036429873, 'f1_score': 0.8415398388540735}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12360493935644627, 'precision': 0.8254799301919721, 'recall': 0.8615664845173042, 'f1_score': 0.8431372549019608}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1239062004094012, 'precision': 0.8248686514886164, 'recall': 0.8579234972677595, 'f1_score': 0.8410714285714285}
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.033 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: | 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: / 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: - 0.342 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: \ 0.347 MB of 0.347 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb: Training loss █▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss █▃▂▂▁▁▁▁▁▁▁▁▁▁▁▂▂▂▂▂
+wandb:      f1_score ▁▂▄▅▆▇▇▇████████████
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▂▅███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▄▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:     precision █▁▃▃▄▄▄▅▅▅▅▅▅▆▅▅▆▆▆▆
+wandb:        recall ▁▄▅▆▇▇▇█████████████
+wandb:    train_loss █▅▂▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.01295
+wandb:     eval_loss 0.12391
+wandb:      f1_score 0.84107
+wandb:   global_step 4000
+wandb:            lr 0.0
+wandb:     precision 0.82487
+wandb:        recall 0.85792
+wandb:    train_loss 0.01295
+wandb: 
+wandb: 🚀 View run vocal-resonance-104 at: https://wandb.ai/tajak/NER/runs/niogfovd
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v7
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_113753-niogfovd/logs

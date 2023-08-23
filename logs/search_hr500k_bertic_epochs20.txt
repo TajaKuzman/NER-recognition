@@ -1,0 +1,92 @@
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc', 'I-deriv-per']
+(398681, 3) (51190, 3) (49764, 3)
+     sentence_id      words labels
+717            0      Kazna      O
+718            0  medijskom      O
+719            0     mogulu      O
+720            0   obnovila      O
+721            0   raspravu      O
+wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230823_102604-wmvycfic
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run lucky-leaf-100
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/wmvycfic
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10987547665558924, 'precision': 0.6404, 'recall': 0.703427065026362, 'f1_score': 0.6704355108877721}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04644514075136022, 'precision': 0.8448637316561844, 'recall': 0.8853251318101933, 'f1_score': 0.8646213258957305}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04133860087486349, 'precision': 0.8714773697694278, 'recall': 0.8967486818980668, 'f1_score': 0.8839324382849718}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.041266621888160014, 'precision': 0.8770281810418445, 'recall': 0.9024604569420035, 'f1_score': 0.8895625812039843}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04607979484314961, 'precision': 0.8840393667094566, 'recall': 0.9077328646748682, 'f1_score': 0.8957294602211142}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04517282057380217, 'precision': 0.8902333621434745, 'recall': 0.9050966608084359, 'f1_score': 0.8976034858387799}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.048599171821122326, 'precision': 0.892018779342723, 'recall': 0.9182776801405975, 'f1_score': 0.9049577830699286}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05063626230841276, 'precision': 0.8876548483554036, 'recall': 0.9130052724077329, 'f1_score': 0.900151613601906}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05426958017467658, 'precision': 0.8856167306871532, 'recall': 0.9116871704745168, 'f1_score': 0.8984628707512449}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05373874681528622, 'precision': 0.8881775501493812, 'recall': 0.914323374340949, 'f1_score': 0.9010608356787183}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.054661613993358484, 'precision': 0.8888888888888888, 'recall': 0.9138840070298769, 'f1_score': 0.9012131715771229}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.056497398263772376, 'precision': 0.8890311566367904, 'recall': 0.9152021089630932, 'f1_score': 0.9019268239878762}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0554688628185095, 'precision': 0.8946689595872743, 'recall': 0.914323374340949, 'f1_score': 0.9043893959148197}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05614522217009838, 'precision': 0.8918918918918919, 'recall': 0.913444639718805, 'f1_score': 0.9025396136314305}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05793074762494383, 'precision': 0.8913136499786051, 'recall': 0.9152021089630932, 'f1_score': 0.9030999349663994}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.058599345544859405, 'precision': 0.8939003436426117, 'recall': 0.914323374340949, 'f1_score': 0.9039965247610774}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05910879746245552, 'precision': 0.8960481099656358, 'recall': 0.9165202108963093, 'f1_score': 0.9061685490877498}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06017488241185151, 'precision': 0.8966552315608919, 'recall': 0.9187170474516696, 'f1_score': 0.9075520833333333}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.060177417468261635, 'precision': 0.894420600858369, 'recall': 0.9156414762741653, 'f1_score': 0.9049066435084672}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.060160603293481996, 'precision': 0.8948046371833405, 'recall': 0.9156414762741653, 'f1_score': 0.9051031487513572}
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb: Training loss █▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss █▂▁▁▁▁▂▂▂▂▂▃▂▃▃▃▃▃▃▃
+wandb:      f1_score ▁▇▇▇████████████████
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:            lr ▂▅████▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:     precision ▁▇▇▇████████████████
+wandb:        recall ▁▇▇▇████████████████
+wandb:    train_loss █▃▂▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.00051
+wandb:     eval_loss 0.06016
+wandb:      f1_score 0.9051
+wandb:   global_step 12380
+wandb:            lr 0.0
+wandb:     precision 0.8948
+wandb:        recall 0.91564
+wandb:    train_loss 0.00627
+wandb: 
+wandb: 🚀 View run lucky-leaf-100 at: https://wandb.ai/tajak/NER/runs/wmvycfic
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v3
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_102604-wmvycfic/logs

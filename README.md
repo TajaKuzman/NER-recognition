@@ -8,6 +8,14 @@ An evaluation of various encoder Transformer-based large language models on the 
  - standard Serbian
  - non-standard Serbian
 
+**Dataset sizes**
+
+(Sizes in no. of words - instances)
+
+| elexiswsd (SL_s) | /senticoref (SL_s) | hr500k (HR_s) | reldi-normtagner-hr (HR_ns) | reldi-normtagner-sr (SR_ns) | set.sr.plus (SR_s) | ssj500k (SL_s) | Janes-Tag (SL_ns) |
+|------------------|--------------------|---------------|-----------------------------|-----------------------------|--------------------|----------------|-------------------|
+| 31,233           | 391,962            | 499,635       | 89,855                      | 97,673                      | 92,271             | 235,864        | 75,926            |
+
 
 ## Dataset preparation
 
@@ -47,18 +55,33 @@ train_df = pd.DataFrame(json_dict["train"])
 test_df = pd.DataFrame(json_dict["test"])
 dev_df = pd.DataFrame(json_dict["dev"])
 
+# Change the sentence_ids to integers (!! important - otherwise, the models do not work)
+test_df['sentence_id'] = pd.factorize(test_df['sentence_id'])[0]
+train_df['sentence_id'] = pd.factorize(train_df['sentence_id'])[0]
+dev_df['sentence_id'] = pd.factorize(dev_df['sentence_id'])[0]
+
+# Define the labels
+LABELS = json_dict["labels"]
+print(LABELS)
+
+print(train_df.shape, test_df.shape, dev_df.shape)
+print(train_df.head())
+
 ```
 
 ## Hyperparameter search
 
-### Hyperparameter search for XLM-R-Large
+We did hyperparameter search for the following models:
+- XLM-R-base - hyperparameters to be used for XLM-R-b-BCMS models as well
+- XLM-R-large - - hyperparameters to be used for XLM-R-l-BCMS and XLM-R-l-SL-BCMS models as well
+- BERTić
+- CSEBERT
 
-Code (change in the code the number of epochs you want to run - line 53 - and add argument whether the xlm-r model is base or large: xlm-r-base / xlm-r-large):
-```
-CUDA_VISIBLE_DEVICES=1 nohup python hyperparameter_search.py -ln xlm-r-base > search_hr_base_epochs20.txt &
-```
+For each model, we do 2 searches:
+- one on hr500k: to be used for hr500k
+- one on reldi-hr: to be used for reldi-hr, reldi-sr
 
-I performed it on standard HR dataset (hr500k).
+(For later experiments on SL data, we will do separate hyperparameter searches for these models and SloBERTa on ssj500k and Janes-Tag.)
 
 I searched for the optimum no. of epochs, while we set the other hyperparameters to these values:
 
@@ -83,9 +106,16 @@ model_args ={"overwrite_output_dir": True,
 }
 ```
 
-I searched for the optimum no. of epochs by training the model for 20 epochs and then evaluating during training. Then I inspected how the evaluation loss falls during training and did a more fine-grained evaluation by training the model again on a couple of most promising epochs.
+Code: ``` CUDA_VISIBLE_DEVICES=1 nohup python hyperparameter_search.py -d datasets/hr500k.conllup_extracted.json -ln xlm-r-base -e 20 > logs/search_hr_base_epochs20.txt & ```
 
-Based on the training loss, evaluation loss and f1 score, the optimum no. of epochs is *5* for large models and *9* for base models (afterwards, f1 plateaus and evaluation loss rises).
+Args:
+- ln: xlm-r-base, xlm-r-large, csebert or bertic
+- d (dataset on which we run hyperparameter search): datasets/hr500k.conllup_extracted.json or datasets/reldi-normtagner-hr.conllup_extracted.json
+- e: number of epochs to fine-tune the model for, e.g. 20
+
+### Hyperparameter search on hr500k
+
+I searched for the optimum no. of epochs by training the model for 20 epochs and then evaluating during training. Then I inspected how the evaluation loss falls during training (when F1 plateaus and evaluation loss starts rising).
 
 Hyperparameter search for XLM-R-large:
 
@@ -95,11 +125,38 @@ Hyperparameter search for XLM-R-base:
 
 ![](figures/xlm-r-base-hr-hyperparameter-search-epoch9.png)
 
-### Hyperparameters used for XLM-R-large models
+Hyperparameter search for BERTić:
+
+![](figures/bertic-hr500k-hyperparameter-search-epoch7.png)
+
+Hyperparameter search for CSEBERT:
+
+![](figures/csebert-hr500k-hyperparameter-search-epoch8.png)
+
+### Hyperparameter search on reldi-hr
+
+Hyperparameter search for XLM-R-large:
+
+![](figures/xlm-l-reldi-hr-hyperparameter-search-epoch7.png)
+
+Hyperparameter search for XLM-R-base:
+
+![](figures/xlm-r-reldi-hr-hyperparameter-search-epoch11.png)
+
+Hyperparameter search for BERTić:
+
+![](figures/bertic-reldi-hr-hyperparameter-search-epoch14.png)
+
+Hyperparameter search for CSEBERT:
+
+![](figures/csebert-reldi-hr-hyperparameter-search-epoch9.png)
+
+### Hyperparameters used 
+
+We use the following hyperparameters for all models and change only the no. of epochs (`num_train_epochs`):
 
 ```
 model_args ={"overwrite_output_dir": True,
-             "num_train_epochs": 7,
              "labels_list": LABELS,
              "learning_rate": 1e-5,
              "train_batch_size": 32,
@@ -108,47 +165,38 @@ model_args ={"overwrite_output_dir": True,
              "no_save": True,
              "max_seq_length": 256,
              "save_steps": -1,
-            "wandb_project": "NER",
             "silent": True,
              }
 ```
 
-### Hyperparameters used for XLM-R-base models
+Number of epochs for hr500k:
+- XLM-R-large, XLM-R-l-BCMS, XLM-R-l-SI-BCMS: 5
+- XLM-R-base, XLM-R-b-BCMS: 9
+- BERTić: 7
+- CSEBERT: 8
 
-Including SloBERTa, BERTić, CSEBERT.
+Number of epochs for reldi-hr and reldi-sr:
+- XLM-R-large, XLM-R-l-BCMS, XLM-R-l-SI-BCMS: 7
+- XLM-R-base, XLM-R-b-BCMS: 11
+- BERTić: 14
+- CSEBERT: 9
 
-```
-model_args ={"overwrite_output_dir": True,
-             "num_train_epochs": 9,
-             "labels_list": LABELS,
-             "learning_rate": 1e-5,
-             "train_batch_size": 32,
-             # Comment out no_cache and no_save if you want to save the model
-             "no_cache": True,
-             "no_save": True,
-             "max_seq_length": 256,
-             "save_steps": -1,
-            "wandb_project": "NER",
-            "silent": True,
-             }
-```
 
 ## Model evaluation
 
-For each dataset, run the following code (with the path to the extracted dataset in json as the argument):
+For each dataset, run the following code (with the path to the extracted dataset in json as the argument) for the publicly available datasets:
 
 ```
 CUDA_VISIBLE_DEVICES=1 nohup python ner-classification.py datasets/hr500k.conllup_extracted.json > ner_classification.log &
 ```
 
-To run Nikola's code (move to folder Nikola-code):
+For our own models, run the following code:
 ```
-CUDA_VISIBLE_DEVICES=3 nohup python finetune_arged.py -ln xlm-r-base > ner_classification_Nikola_code.log &
+CUDA_VISIBLE_DEVICES=2 nohup python ner-classification-with-custom-models.py datasets/reldi-normtagner-hr.conllup_extracted.json > ner_classification_custom.log &
 ```
 
-Model's evaluated on:
-- Croatian standard
-- Croatian non-standard
-- Serbian non-standard
-- Serbian standard
-- Slovenian standard: elexiswsd, senticoref
+The outputs are saved as:
+- *ner-results.txt* and *ner-results-our-models.txt*: files with all results from all runs (including per label results)
+- *ner-results-summary-table.csv* and *ner-results-summary-table-our-models.csv*: tables with summarized results (just Macro F1s for each dataset for each model)
+- *datasets/hr500k.conllup_extracted.json-test_df-with-predictions.csv* (dataset path + -test_df-with-predictions.csv): test splits with y_pred values from all runs
+- confusion matrices are saved in the *figures/cm-datasets* folder

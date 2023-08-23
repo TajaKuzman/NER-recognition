@@ -1,0 +1,121 @@
+wandb: Currently logged in as: tajak. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at xlm-roberta-large were not used when initializing XLMRobertaForTokenClassification: ['lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.bias']
+- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at xlm-roberta-large and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
+(71967, 3) (8952, 3) (8936, 3)
+   sentence_id    words labels
+0            0   Vakula  B-per
+1            0    dragi      O
+2            0  Drakula  B-per
+3            0        ,      O
+4            0     kiša      O
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230823_111012-3w3exhso
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run classic-fire-103
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/3w3exhso
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.14343848167336545, 'precision': 0.6083333333333333, 'recall': 0.6648451730418944, 'f1_score': 0.6353350739773717}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08428506570286118, 'precision': 0.8311926605504587, 'recall': 0.825136612021858, 'f1_score': 0.8281535648994516}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08949108378059463, 'precision': 0.8471454880294659, 'recall': 0.8378870673952641, 'f1_score': 0.8424908424908425}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08897955660097068, 'precision': 0.8246527777777778, 'recall': 0.8652094717668488, 'f1_score': 0.8444444444444446}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08755753874604125, 'precision': 0.8592321755027422, 'recall': 0.8561020036429873, 'f1_score': 0.8576642335766423}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09126096342253731, 'precision': 0.8315972222222222, 'recall': 0.8724954462659381, 'f1_score': 0.8515555555555555}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09764123145312624, 'precision': 0.8680926916221033, 'recall': 0.8870673952641166, 'f1_score': 0.8774774774774774}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11128195015893652, 'precision': 0.8807339449541285, 'recall': 0.8743169398907104, 'f1_score': 0.8775137111517366}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11467249876222922, 'precision': 0.8568904593639576, 'recall': 0.8834244080145719, 'f1_score': 0.8699551569506725}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12472382154170646, 'precision': 0.8841911764705882, 'recall': 0.8761384335154827, 'f1_score': 0.8801463860933211}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12247157996534497, 'precision': 0.8541300527240774, 'recall': 0.8852459016393442, 'f1_score': 0.8694096601073346}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.13107005572522212, 'precision': 0.875, 'recall': 0.8797814207650273, 'f1_score': 0.8773841961852861}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.12515303543673326, 'precision': 0.8594306049822064, 'recall': 0.8797814207650273, 'f1_score': 0.8694869486948694}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.13563820077034733, 'precision': 0.8647686832740213, 'recall': 0.8852459016393442, 'f1_score': 0.8748874887488749}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1392269665261756, 'precision': 0.8763440860215054, 'recall': 0.8907103825136612, 'f1_score': 0.8834688346883468}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1414803468136938, 'precision': 0.8784029038112523, 'recall': 0.8816029143897997, 'f1_score': 0.88}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.14609042338347536, 'precision': 0.8788426763110307, 'recall': 0.8852459016393442, 'f1_score': 0.8820326678765881}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.14664493167897036, 'precision': 0.8652482269503546, 'recall': 0.8888888888888888, 'f1_score': 0.8769092542677448}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.14924233799461034, 'precision': 0.8786231884057971, 'recall': 0.8834244080145719, 'f1_score': 0.8810172570390554}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.14883290116608805, 'precision': 0.8723021582733813, 'recall': 0.8834244080145719, 'f1_score': 0.8778280542986425}
+INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.028 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb: Training loss █▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss ▇▁▂▂▁▂▂▄▄▅▅▆▅▇▇▇████
+wandb:      f1_score ▁▆▇▇▇▇██████████████
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▂▅███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▄▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:     precision ▁▇▇▆▇▇██▇█▇█▇███████
+wandb:        recall ▁▆▆▇▇▇█▇████████████
+wandb:    train_loss ▂▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 1e-05
+wandb:     eval_loss 0.14883
+wandb:      f1_score 0.87783
+wandb:   global_step 4000
+wandb:            lr 0.0
+wandb:     precision 0.8723
+wandb:        recall 0.88342
+wandb:    train_loss 1e-05
+wandb: 
+wandb: 🚀 View run classic-fire-103 at: https://wandb.ai/tajak/NER/runs/3w3exhso
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v6
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_111012-3w3exhso/logs
+Exception in thread NetStatThr:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 256, in check_network_status
+    self._loop_check_status(
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 212, in _loop_check_status
+    local_handle = request()
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/interface/interface.py", line 864, in deliver_network_status
+    return self._deliver_network_status(status)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/interface/interface_shared.py", line 610, in _deliver_network_status
+    return self._deliver_record(record)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/interface/interface_shared.py", line 569, in _deliver_record
+    handle = mailbox._deliver_record(record, interface=self)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/lib/mailbox.py", line 455, in _deliver_record
+    interface._publish(record)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe

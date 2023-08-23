@@ -52,11 +52,9 @@ print(train_df.head())
 
 def train_and_test(model, train_df, test_df, dataset_path, LABELS):
 
-    # Define the model
-
-    # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
-    # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before)
-    xlm_r_large_args = {"overwrite_output_dir": True,
+    # Define the model arguments - these arguments hold for all models,
+    # we just change the epoch number based on hyperparameter search
+    model_args = {"overwrite_output_dir": True,
                 "num_train_epochs": 5,
                 "labels_list": LABELS,
                 "learning_rate": 1e-5,
@@ -68,34 +66,42 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
                 "save_steps": -1,
                 "silent": True,
                 }
+    
+    # Define the type of dataset we are using
+    # - when we extend the code for SL, change this
+    dataset_type = "standard"
 
-    xlm_r_base_args = {"overwrite_output_dir": True,
-             "num_train_epochs": 9,
-             "labels_list": LABELS,
-             "learning_rate": 1e-5,
-             "train_batch_size": 32,
-             # Comment out no_cache and no_save if you want to save the model
-             "no_cache": True,
-             "no_save": True,
-             "max_seq_length": 256,
-             "save_steps": -1,
-            "silent": True,
-             }
+    if "reldi" in dataset_path:
+        dataset_type = "non_standard"
 
+    # Change no. of epochs based on the model and the dataset
+    if dataset_type == "standard":
+        if model == "xlm-r-base":
+            model_args["num_train_epochs"] = 9
+        elif model == "csebert":
+            model_args["num_train_epochs"] = 8
+        elif model == "xlm-r-large":
+            model_args["num_train_epochs"] = 5
+        elif model == "bertic":
+            model_args["num_train_epochs"] = 7
+    elif dataset_type == "non_standard":
+        if model == "xlm-r-base":
+            model_args["num_train_epochs"] = 11
+        elif model == "csebert":
+            model_args["num_train_epochs"] = 9
+        elif model == "xlm-r-large":
+            model_args["num_train_epochs"] = 7
+        elif model == "bertic":
+            model_args["num_train_epochs"] = 14
 
     # Model type - a dictionary of type and model name.
-    # To refer to our own models, use the path to the model directory as the model name.
     model_type_dict = {
-        "sloberta": ["camembert", "EMBEDDIA/sloberta", xlm_r_base_args],
-        "csebert": ["bert", "EMBEDDIA/crosloengual-bert", xlm_r_base_args],
-        "xlm-r-base": ["xlmroberta", "xlm-roberta-base", xlm_r_base_args],
-        "xlm-r-large": ["xlmroberta", "xlm-roberta-large", xlm_r_large_args],
-        "bertic": ["electra", "classla/bcms-bertic", xlm_r_base_args],
-        "xlmrl_bcms_48000": ["xlmroberta", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000", xlm_r_large_args]
+        #"sloberta": ["camembert", "EMBEDDIA/sloberta"],
+        "csebert": ["bert", "EMBEDDIA/crosloengual-bert"],
+        "xlm-r-base": ["xlmroberta", "xlm-roberta-base"],
+        "xlm-r-large": ["xlmroberta", "xlm-roberta-large"],
+        "bertic": ["electra", "classla/bcms-bertic"],
     }
-
-    # Update the hyperparameters accordingly to the model
-    model_args = model_type_dict[model][2]
 
     # Define the model
     current_model = NERModel(
@@ -105,7 +111,7 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
     use_cuda=True,
     args = model_args)
 
-    print("Training started. Current model: {}".format(model))
+    print("Training started. Current model: {}, no. of epochs: {}".format(model, model_args["num_train_epochs"]))
     start_time = time.time()
 
     # Fine-tune the model
@@ -170,8 +176,8 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
     return metrics
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
-model_list = ["xlm-r-large", "sloberta", "csebert", "xlm-r-base", "bertic"]
-#model_list = ["xlmrl_bcms_48000"]
+#model_list = ["xlm-r-large", "csebert", "xlm-r-base", "bertic"]
+model_list = ["csebert", "bertic"]
 
 for model in model_list:
     for run in list(range(2)):
@@ -212,5 +218,4 @@ pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
 pivot_df.reset_index(inplace=True)
 
 # Save the summary results
-
 pivot_df.to_csv("ner-results-summary-table.csv")

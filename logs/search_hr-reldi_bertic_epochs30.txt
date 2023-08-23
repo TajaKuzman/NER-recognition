@@ -1,0 +1,114 @@
+wandb: Currently logged in as: tajak. Use `wandb login --relogin` to force relogin
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense.weight', 'discriminator_predictions.dense_prediction.bias']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/simpletransformers/ner/ner_model.py:483: UserWarning: The eval_df parameter has been renamed to eval_data. Using eval_df will raise an error in a future version.
+  warnings.warn(
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
+(71967, 3) (8952, 3) (8936, 3)
+   sentence_id    words labels
+0            0   Vakula  B-per
+1            0    dragi      O
+2            0  Drakula  B-per
+3            0        ,      O
+4            0     kiša      O
+wandb: Tracking run with wandb version 0.15.8
+wandb: Run data is saved locally in /home/tajak/NER-recognition/wandb/run-20230823_120601-me9y02do
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fluent-deluge-107
+wandb: ⭐️ View project at https://wandb.ai/tajak/NER
+wandb: 🚀 View run at https://wandb.ai/tajak/NER/runs/me9y02do
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/seqeval/metrics/v1.py:57: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.39519925333559514, 'precision': 0.0, 'recall': 0.0, 'f1_score': 0.0}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1578815343696624, 'precision': 0.5760456273764258, 'recall': 0.5519125683060109, 'f1_score': 0.5637209302325581}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11930786455981433, 'precision': 0.684654300168634, 'recall': 0.7395264116575592, 'f1_score': 0.7110332749562172}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10834637966938317, 'precision': 0.7283737024221453, 'recall': 0.7668488160291439, 'f1_score': 0.7471162377994676}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10253930727718398, 'precision': 0.7585034013605442, 'recall': 0.8123861566484517, 'f1_score': 0.7845206684256816}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09978961640736088, 'precision': 0.7645107794361525, 'recall': 0.8397085610200364, 'f1_score': 0.8003472222222221}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0981331593520008, 'precision': 0.8066783831282952, 'recall': 0.8360655737704918, 'f1_score': 0.8211091234347047}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09810084467986599, 'precision': 0.7975986277873071, 'recall': 0.8469945355191257, 'f1_score': 0.8215547703180212}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10047074572066776, 'precision': 0.8377896613190731, 'recall': 0.8561020036429873, 'f1_score': 0.8468468468468469}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09922074055531993, 'precision': 0.817717206132879, 'recall': 0.8743169398907104, 'f1_score': 0.8450704225352114}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0989581870182883, 'precision': 0.8224137931034483, 'recall': 0.8688524590163934, 'f1_score': 0.8449955713020373}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09916379099129699, 'precision': 0.8548094373865699, 'recall': 0.8579234972677595, 'f1_score': 0.8563636363636363}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10009695898741483, 'precision': 0.836555360281195, 'recall': 0.8670309653916212, 'f1_score': 0.8515205724508049}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10796275326807518, 'precision': 0.8628884826325411, 'recall': 0.8597449908925319, 'f1_score': 0.8613138686131387}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10899159077904187, 'precision': 0.8458781362007168, 'recall': 0.8597449908925319, 'f1_score': 0.8527551942186088}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10724681497609709, 'precision': 0.8289703315881326, 'recall': 0.8652094717668488, 'f1_score': 0.8467023172905526}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11133667981892359, 'precision': 0.8584392014519057, 'recall': 0.8615664845173042, 'f1_score': 0.8600000000000001}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11166956733795814, 'precision': 0.8571428571428571, 'recall': 0.8633879781420765, 'f1_score': 0.8602540834845734}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10798056831292342, 'precision': 0.8460176991150442, 'recall': 0.8706739526411658, 'f1_score': 0.858168761220826}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10812889150402043, 'precision': 0.8548387096774194, 'recall': 0.8688524590163934, 'f1_score': 0.8617886178861789}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11034809279546608, 'precision': 0.8443649373881932, 'recall': 0.8597449908925319, 'f1_score': 0.851985559566787}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11119187802949454, 'precision': 0.8407079646017699, 'recall': 0.8652094717668488, 'f1_score': 0.8527827648114902}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11343409240827895, 'precision': 0.851985559566787, 'recall': 0.8597449908925319, 'f1_score': 0.8558476881233001}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11027413131436332, 'precision': 0.8482142857142857, 'recall': 0.8652094717668488, 'f1_score': 0.8566275924256087}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11210727662226418, 'precision': 0.8520499108734403, 'recall': 0.8706739526411658, 'f1_score': 0.8612612612612612}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11675033925712341, 'precision': 0.8743068391866913, 'recall': 0.8615664845173042, 'f1_score': 0.8678899082568808}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11320739449496614, 'precision': 0.8484848484848485, 'recall': 0.8670309653916212, 'f1_score': 0.8576576576576578}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11380409516597866, 'precision': 0.8482142857142857, 'recall': 0.8652094717668488, 'f1_score': 0.8566275924256087}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11371459872781997, 'precision': 0.8449197860962567, 'recall': 0.8633879781420765, 'f1_score': 0.8540540540540541}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.11344340330455452, 'precision': 0.8442477876106195, 'recall': 0.8688524590163934, 'f1_score': 0.8563734290843805}
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.028 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: \ 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: | 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: / 0.391 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: - 0.395 MB of 0.395 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb: Training loss █▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss █▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:      f1_score ▁▆▇▇▇▇████████████████████████
+wandb:   global_step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▂▅████▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:     precision ▁▆▆▇▇▇▇▇██████████████████████
+wandb:        recall ▁▅▇▇██████████████████████████
+wandb:    train_loss █▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.00101
+wandb:     eval_loss 0.11344
+wandb:      f1_score 0.85637
+wandb:   global_step 6000
+wandb:            lr 0.0
+wandb:     precision 0.84425
+wandb:        recall 0.86885
+wandb:    train_loss 0.00101
+wandb: 
+wandb: 🚀 View run fluent-deluge-107 at: https://wandb.ai/tajak/NER/runs/me9y02do
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v7
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_120601-me9y02do/logs

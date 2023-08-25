@@ -16,6 +16,39 @@ An evaluation of various encoder Transformer-based large language models on the 
 |------------------|--------------------|---------------|-----------------------------|-----------------------------|--------------------|----------------|-------------------|
 | 31,233           | 391,962            | 499,635       | 89,855                      | 97,673                      | 92,271             | 235,864        | 75,926            |
 
+## Results
+
+![](figures/results-all-runs.png)
+
+**Base-sized models**
+
+(Each model was trained and tested twice, these results are the means of two runs.)
+
+| Base-sized Model | hr500k-Macro F1 | hr500k-Std | reldi-hr-Macro F1 | reldi-hr-Std | reldi-sr-Macro F1 | reldi-sr-Std | set.sr-Macro F1 | set.sr-Std |
+|------------------|-----------------|------------|-------------------|--------------|-------------------|--------------|-----------------|------------|
+| bertic           | 0.91            | 0.01       | 0.75              | 0.05         | 0.68              | 0.06         | 0.83            | 0.04       |
+| csebert          | 0.91            | 0.00       | 0.75              | 0.02         | 0.73              | 0.02         | 0.91            | 0.00       |
+| xlm-r-base       | 0.91            | 0.00       | 0.75              | 0.02         | 0.60              | 0.07         | 0.90            | 0.00       |
+| xlmrb_bcms-12    | 0.91            | 0.00       | 0.77              | 0.04         | 0.76              | 0.02         | 0.91            | 0.00       |
+| xlmrb_bcms-96    | 0.92            | 0.00       | 0.81              | 0.03         | 0.78              | 0.01         | 0.93            | 0.00       |
+
+In the case of Croatian and Serbian non-standard, the first step of our model (XLM-R-b-BCMS-12k) already improves the results. The last step (96k) improves the results on all datasets (for 0.01 to 0.18 points). More steps improves results (96k gives better results than 12k).
+
+**Large-sized models**
+
+(Each model was trained and tested twice, these results are the means of two runs.)
+
+| Large-sized Model | hr500k-Macro F1 | hr500k-Std | reldi-hr-Macro F1 | reldi-hr-Std | reldi-sr-Macro F1 | reldi-sr-Std | set.sr-Macro F1 | set.sr-Std |
+|-------------------|-----------------|------------|-------------------|--------------|-------------------|--------------|-----------------|------------|
+| xlm-r-large       |            0.92 |       0.00 |              0.77 |         0.03 |              0.77 |         0.00 |            0.93 |       0.00 |
+| xlmrl_bcms-6      |            0.92 |       0.00 |              0.77 |         0.02 |              0.81 |         0.01 |            0.94 |       0.00 |
+| xlmrl_bcms-48     |            0.93 |       0.00 |              0.80 |         0.00 |              0.75 |         0.03 |            0.93 |       0.01 |
+| xlmrl_sl-bcms-6   |            0.92 |       0.00 |              0.78 |         0.00 |              0.80 |         0.01 |            0.94 |       0.00 |
+| xlmrl_sl-bcms-48  |            0.93 |       0.01 |              0.77 |         0.01 |              0.81 |         0.00 |            0.94 |       0.00 |
+
+When compared with XLM-R-large, our models improve the results on all datasets (from 0.01 to 0.04 points).
+There are no big differences between XLM-R-BCMS and XLM-R-SI-BCMS.
+There are also no obvious indications that 48k steps is better than 6k steps - already 6k steps is enough in most cases.
 
 ## Dataset preparation
 
@@ -77,9 +110,10 @@ We did hyperparameter search for the following models:
 - BERTić
 - CSEBERT
 
-For each model, we do 2 searches:
+For each model, we do 3 searches:
 - one on hr500k: to be used for hr500k
 - one on reldi-hr: to be used for reldi-hr, reldi-sr
+- one on set.sr: to be used for set.sr
 
 (For later experiments on SL data, we will do separate hyperparameter searches for these models and SloBERTa on ssj500k and Janes-Tag.)
 
@@ -174,6 +208,12 @@ Number of epochs for hr500k:
 - XLM-R-base, XLM-R-b-BCMS: 9
 - BERTić: 7
 - CSEBERT: 8
+
+Number of epochs for set.sr:
+- XLM-R-large, XLM-R-l-BCMS, XLM-R-l-SI-BCMS: 11
+- XLM-R-base, XLM-R-b-BCMS: 11
+- BERTić: 12
+- CSEBERT: 9
 
 Number of epochs for reldi-hr and reldi-sr:
 - XLM-R-large, XLM-R-l-BCMS, XLM-R-l-SI-BCMS: 7

@@ -1,22 +1,22 @@
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-12000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-12000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-12000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-12000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
-['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
-(71967, 3) (8952, 3) (8936, 3)
-   sentence_id    words labels
-0            0   Vakula  B-per
-1            0    dragi      O
-2            0  Drakula  B-per
-3            0        ,      O
-4            0     kiša      O
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc']
+(74259, 3) (11421, 3) (11993, 3)
+     sentence_id      words labels
+726            0      Kazna      O
+727            0  medijskom      O
+728            0     mogulu      O
+729            0   obnovila      O
+730            0     debatu      O
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-12000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 60
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 115
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 12000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 40 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -28,45 +28,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.25 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08711232721041072, 'precision': 0.7966942148760331, 'recall': 0.8382608695652174, 'f1_score': 0.8169491525423728}
+It took 3.2 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0569075065132123, 'precision': 0.9386845039018952, 'recall': 0.9345172031076582, 'f1_score': 0.9365962180200221}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.24 minutes for 8952 instances.
-Macro f1: 0.712, Micro f1: 0.978
-Accuracy: 0.978
+It took 0.2 minutes for 11421 instances.
+Macro f1: 0.903, Micro f1: 0.989
+Accuracy: 0.989
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-12
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09275346503595427, 'precision': 0.8156996587030717, 'recall': 0.831304347826087, 'f1_score': 0.8234280792420327}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-24000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.1 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06778335233729404, 'precision': 0.9388888888888889, 'recall': 0.9378468368479467, 'f1_score': 0.9383675735702387}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-24000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-24000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-24000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.27 minutes for 8952 instances.
-Macro f1: 0.677, Micro f1: 0.978
-Accuracy: 0.978
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.909, Micro f1: 0.99
+Accuracy: 0.99
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-24000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 120
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 230
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 24000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 80 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -78,51 +70,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.28 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09162603615100265, 'precision': 0.8046744574290484, 'recall': 0.8382608695652174, 'f1_score': 0.8211243611584327}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
+It took 3.1 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.045296611028830876, 'precision': 0.9411764705882353, 'recall': 0.9411764705882353, 'f1_score': 0.9411764705882353}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.28 minutes for 8952 instances.
-Macro f1: 0.696, Micro f1: 0.978
-Accuracy: 0.978
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.929, Micro f1: 0.991
+Accuracy: 0.991
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-24
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09645960635050156, 'precision': 0.7892976588628763, 'recall': 0.8208695652173913, 'f1_score': 0.8047740835464621}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-36000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.11 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05733698795721956, 'precision': 0.9488888888888889, 'recall': 0.9478357380688124, 'f1_score': 0.9483620210993893}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-36000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-36000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-36000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.28 minutes for 8952 instances.
-Macro f1: 0.686, Micro f1: 0.977
-Accuracy: 0.977
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.938, Micro f1: 0.992
+Accuracy: 0.992
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-36000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 180
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 346
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 36000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 16 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -134,39 +112,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08552610349737003, 'precision': 0.8174204355108877, 'recall': 0.8486956521739131, 'f1_score': 0.8327645051194539}
+It took 3.1 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.049980258882099476, 'precision': 0.9315673289183223, 'recall': 0.9367369589345172, 'f1_score': 0.9341449916989486}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.29 minutes for 8952 instances.
-Macro f1: 0.785, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.911, Micro f1: 0.989
+Accuracy: 0.989
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-36
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08398692602859978, 'precision': 0.817258883248731, 'recall': 0.84, 'f1_score': 0.8284734133790738}
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-48000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.12 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06246559972211029, 'precision': 0.9446290143964563, 'recall': 0.946725860155383, 'f1_score': 0.9456762749445677}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-48000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-48000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-48000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.28 minutes for 8952 instances.
-Macro f1: 0.751, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.929, Micro f1: 0.991
+Accuracy: 0.991
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-48000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 240
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 461
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 48000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 56 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -178,51 +154,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07472826127375755, 'precision': 0.825503355704698, 'recall': 0.8556521739130435, 'f1_score': 0.8403074295473953}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
+It took 3.08 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04949585384053465, 'precision': 0.9273927392739274, 'recall': 0.9356270810210877, 'f1_score': 0.9314917127071825}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.33 minutes for 8952 instances.
-Macro f1: 0.76, Micro f1: 0.981
-Accuracy: 0.981
+It took 0.23 minutes for 11421 instances.
+Macro f1: 0.906, Micro f1: 0.99
+Accuracy: 0.99
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-48
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.3 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0810565650826152, 'precision': 0.8189368770764119, 'recall': 0.8573913043478261, 'f1_score': 0.8377230246389124}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-60000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.13 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06083818016133871, 'precision': 0.938257993384785, 'recall': 0.9445061043285239, 'f1_score': 0.9413716814159292}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-60000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-60000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-60000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.29 minutes for 8952 instances.
-Macro f1: 0.755, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.23 minutes for 11421 instances.
+Macro f1: 0.932, Micro f1: 0.991
+Accuracy: 0.991
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-60000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 300
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 576
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 60000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 96 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -234,51 +196,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08690132627164052, 'precision': 0.8078817733990148, 'recall': 0.8556521739130435, 'f1_score': 0.8310810810810811}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
+It took 3.13 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.049961100685043044, 'precision': 0.9244249726177437, 'recall': 0.9367369589345172, 'f1_score': 0.9305402425578831}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.29 minutes for 8952 instances.
-Macro f1: 0.757, Micro f1: 0.979
-Accuracy: 0.979
+It took 0.22 minutes for 11421 instances.
+Macro f1: 0.909, Micro f1: 0.989
+Accuracy: 0.989
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-60
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.3 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08307813462103986, 'precision': 0.8263772954924875, 'recall': 0.8608695652173913, 'f1_score': 0.8432708688245315}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-72000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.12 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06346099509962816, 'precision': 0.9362637362637363, 'recall': 0.9456159822419534, 'f1_score': 0.9409166206515737}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-72000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-72000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-72000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.3 minutes for 8952 instances.
-Macro f1: 0.762, Micro f1: 0.981
-Accuracy: 0.981
+It took 0.24 minutes for 11421 instances.
+Macro f1: 0.919, Micro f1: 0.991
+Accuracy: 0.991
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-72000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 360
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 692
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 72000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 32 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -290,45 +238,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.29 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07967756164305814, 'precision': 0.8163606010016694, 'recall': 0.8504347826086956, 'f1_score': 0.8330494037478705}
+It took 3.12 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05146552610654348, 'precision': 0.9413716814159292, 'recall': 0.9445061043285239, 'f1_score': 0.9429362880886426}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.31 minutes for 8952 instances.
-Macro f1: 0.75, Micro f1: 0.981
-Accuracy: 0.981
+It took 0.23 minutes for 11421 instances.
+Macro f1: 0.923, Micro f1: 0.991
+Accuracy: 0.991
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-72
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.3 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08119790069698885, 'precision': 0.8195615514333895, 'recall': 0.8452173913043478, 'f1_score': 0.8321917808219177}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-84000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.13 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06701366500688331, 'precision': 0.9425414364640884, 'recall': 0.946725860155383, 'f1_score': 0.9446290143964562}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-84000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-84000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-84000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.31 minutes for 8952 instances.
-Macro f1: 0.759, Micro f1: 0.981
-Accuracy: 0.981
+It took 0.23 minutes for 11421 instances.
+Macro f1: 0.923, Micro f1: 0.991
+Accuracy: 0.991
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-84000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 420
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 807
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 84000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 72 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -340,51 +280,37 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.3 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08501422496394917, 'precision': 0.8076285240464345, 'recall': 0.8469565217391304, 'f1_score': 0.8268251273344651}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
+It took 3.13 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04982183193295406, 'precision': 0.9446290143964563, 'recall': 0.946725860155383, 'f1_score': 0.9456762749445677}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.3 minutes for 8952 instances.
-Macro f1: 0.693, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.23 minutes for 11421 instances.
+Macro f1: 0.93, Micro f1: 0.991
+Accuracy: 0.991
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-84
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.32 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08855798905271288, 'precision': 0.8080808080808081, 'recall': 0.8347826086956521, 'f1_score': 0.8212147134302822}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-96000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
+It took 3.13 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0649029148511405, 'precision': 0.9401993355481728, 'recall': 0.9422863485016648, 'f1_score': 0.9412416851441242}
+Some weights of the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-96000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight']
 - This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-96000 and are newly initialized: ['classifier.bias', 'classifier.weight']
+Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrb_bcms_exp/checkpoint-96000 and are newly initialized: ['classifier.weight', 'classifier.bias']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.31 minutes for 8952 instances.
-Macro f1: 0.687, Micro f1: 0.978
-Accuracy: 0.978
+It took 0.24 minutes for 11421 instances.
+Macro f1: 0.925, Micro f1: 0.99
+Accuracy: 0.99
 Run 1 finished.
 Training of pre-trained model started. Current model: /cache/nikolal/xlmrb_bcms_exp/checkpoint-96000
 INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 480
+INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 923
 INFO:simpletransformers.ner.ner_model:   Continuing training from global step 96000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
+INFO:simpletransformers.ner.ner_model:   Will skip the first 8 steps in the current epoch
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training of pre-trained model completed.
@@ -396,468 +322,23 @@ INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.31 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08218371680368833, 'precision': 0.8239202657807309, 'recall': 0.8626086956521739, 'f1_score': 0.8428207306711978}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
+It took 3.14 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05051887453524754, 'precision': 0.9425414364640884, 'recall': 0.946725860155383, 'f1_score': 0.9446290143964562}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Evaluation completed.
-It took 0.31 minutes for 8952 instances.
-Macro f1: 0.721, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.24 minutes for 11421 instances.
+Macro f1: 0.923, Micro f1: 0.991
+Accuracy: 0.991
 Run 0 finished.
 Training started. Current model: xlmrb_bcms-96
 INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
 INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 Training completed.
-It took 3.31 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08030917923975515, 'precision': 0.8196994991652755, 'recall': 0.8539130434782609, 'f1_score': 0.8364565587734243}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-6000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-6000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
+It took 3.12 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.061776187714489283, 'precision': 0.946725860155383, 'recall': 0.946725860155383, 'f1_score': 0.946725860155383}
 Evaluation completed.
-It took 0.31 minutes for 8952 instances.
-Macro f1: 0.725, Micro f1: 0.98
-Accuracy: 0.98
+It took 0.24 minutes for 11421 instances.
+Macro f1: 0.928, Micro f1: 0.991
+Accuracy: 0.991
 Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-6000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 30
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 6000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-6
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.76 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07867984804693855, 'precision': 0.8238255033557047, 'recall': 0.8539130434782609, 'f1_score': 0.8385994876174211}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.43 minutes for 8952 instances.
-Macro f1: 0.75, Micro f1: 0.981
-Accuracy: 0.981
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-6
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.74 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0796357536953682, 'precision': 0.8069883527454242, 'recall': 0.8434782608695652, 'f1_score': 0.8248299319727891}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-12000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-12000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.43 minutes for 8952 instances.
-Macro f1: 0.644, Micro f1: 0.979
-Accuracy: 0.979
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-12000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 60
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 12000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-12
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.75 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08159089613006482, 'precision': 0.8271812080536913, 'recall': 0.8573913043478261, 'f1_score': 0.8420153714773698}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.69, Micro f1: 0.98
-Accuracy: 0.98
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-12
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.76 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08065241618379267, 'precision': 0.8215488215488216, 'recall': 0.8486956521739131, 'f1_score': 0.834901625320787}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-18000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-18000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.711, Micro f1: 0.98
-Accuracy: 0.98
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-18000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 90
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 18000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-18
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.74 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07660338701372763, 'precision': 0.8488964346349746, 'recall': 0.8695652173913043, 'f1_score': 0.859106529209622}
-/home/tajak/NER-recognition/evaluate.py:42: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  plt.figure(figsize=(6, 6))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.43 minutes for 8952 instances.
-Macro f1: 0.745, Micro f1: 0.983
-Accuracy: 0.983
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-18
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.77 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07329963985920557, 'precision': 0.8297161936560935, 'recall': 0.8643478260869565, 'f1_score': 0.8466780238500853}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-24000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-24000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.43 minutes for 8952 instances.
-Macro f1: 0.742, Micro f1: 0.982
-Accuracy: 0.982
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-24000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 120
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 24000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-24
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.78 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07773196218859647, 'precision': 0.8313856427378965, 'recall': 0.8660869565217392, 'f1_score': 0.8483816013628621}
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.43 minutes for 8952 instances.
-Macro f1: 0.771, Micro f1: 0.982
-Accuracy: 0.982
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-24
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.79 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07376947328877352, 'precision': 0.8273026315789473, 'recall': 0.8747826086956522, 'f1_score': 0.8503803888419272}
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-30000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-30000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.803, Micro f1: 0.982
-Accuracy: 0.982
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-30000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 150
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 30000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-30
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.78 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06742704342363628, 'precision': 0.8202614379084967, 'recall': 0.8730434782608696, 'f1_score': 0.8458298230834035}
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.746, Micro f1: 0.982
-Accuracy: 0.982
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-30
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.79 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0699519369629399, 'precision': 0.8313856427378965, 'recall': 0.8660869565217392, 'f1_score': 0.8483816013628621}
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-36000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-36000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.45 minutes for 8952 instances.
-Macro f1: 0.739, Micro f1: 0.982
-Accuracy: 0.982
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-36000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 180
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 36000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-36
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.75 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07114757687818336, 'precision': 0.8360927152317881, 'recall': 0.8782608695652174, 'f1_score': 0.8566581849024597}
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.786, Micro f1: 0.983
-Accuracy: 0.983
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-36
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.79 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06747049445200282, 'precision': 0.8278145695364238, 'recall': 0.8695652173913043, 'f1_score': 0.8481764206955048}
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-42000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-42000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.773, Micro f1: 0.983
-Accuracy: 0.983
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-42000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 210
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 42000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-42
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.78 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06329852746728779, 'precision': 0.8189509306260575, 'recall': 0.8417391304347827, 'f1_score': 0.8301886792452831}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.689, Micro f1: 0.982
-Accuracy: 0.982
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-42
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.79 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07120598841878015, 'precision': 0.8229342327150084, 'recall': 0.8486956521739131, 'f1_score': 0.8356164383561644}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-48000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_bcms_exp/checkpoint-48000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.717, Micro f1: 0.981
-Accuracy: 0.981
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_bcms_exp/checkpoint-48000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 240
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 48000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_bcms-48
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.78 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07114118850803766, 'precision': 0.8175787728026535, 'recall': 0.8573913043478261, 'f1_score': 0.837011884550085}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.45 minutes for 8952 instances.
-Macro f1: 0.685, Micro f1: 0.981
-Accuracy: 0.981
-Run 0 finished.
-Training started. Current model: xlmrl_bcms-48
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training completed.
-It took 4.8 minutes for 71967 instances.
-INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.07181628148730655, 'precision': 0.8043117744610282, 'recall': 0.8434782608695652, 'f1_score': 0.8234295415959253}
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, msg_start, len(result))
-Some weights of the model checkpoint at /cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000 were not used when initializing XLMRobertaForTokenClassification: ['lm_head.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
-- This IS expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing XLMRobertaForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of XLMRobertaForTokenClassification were not initialized from the model checkpoint at /cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000 and are newly initialized: ['classifier.bias', 'classifier.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Evaluation completed.
-It took 0.44 minutes for 8952 instances.
-Macro f1: 0.659, Micro f1: 0.981
-Accuracy: 0.981
-Run 1 finished.
-Training of pre-trained model started. Current model: /cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000
-INFO:simpletransformers.ner.ner_model:   Continuing training from checkpoint, will skip to saved global_step
-INFO:simpletransformers.ner.ner_model:   Continuing training from epoch 30
-INFO:simpletransformers.ner.ner_model:   Continuing training from global step 6000
-INFO:simpletransformers.ner.ner_model:   Will skip the first 0 steps in the current epoch
-INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to models/.
-INFO:simpletransformers.ner.ner_model: Converting to features started.
-Training of pre-trained model completed.
-Model saved in models/
-Training started. Current model: xlmrl_sl-bcms-6
-INFO:simpletransformers.ner.ner_model:   Starting fine-tuning.

@@ -118,13 +118,15 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
 
     # Define the type of dataset we are using
     # - when we extend the code for SL, change this
-    dataset_type = "standard"
+    dataset_type = "standard_hr"
 
     if "reldi" in dataset_path:
         dataset_type = "non_standard"
+    elif "set.sr" in dataset_path:
+        dataset_type = "standard_sr"
 
     # Change no. of epochs based on the model and the dataset
-    if dataset_type == "standard":
+    if dataset_type == "standard_hr":
         # If the model is based on XLM-R-base, use the same arg as XLM-R-base
         if "xlmrb" in model:
             model_args["num_train_epochs"] = 9
@@ -136,6 +138,8 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
             model_args["num_train_epochs"] = 11
         elif "xlmrl" in model:
             model_args["num_train_epochs"] = 7
+    elif dataset_type == "standard_sr":
+        model_args["num_train_epochs"] = 11
 
     # Define the model
     current_model = NERModel(
@@ -210,9 +214,9 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
     return metrics
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
-#model_list = base_list
+model_list = base_list
 #model_list = large_list
-model_list = all_models_list
+#model_list = all_models_list
 
 
 for model_path in model_list:

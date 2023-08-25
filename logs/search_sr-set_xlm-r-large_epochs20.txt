@@ -29,3 +29,64 @@ INFO:simpletransformers.ner.ner_model: Converting to features started.
 INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04487983583569972, 'precision': 0.9030373831775701, 'recall': 0.9180522565320665, 'f1_score': 0.9104829210836277}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04718146355754918, 'precision': 0.919431279620853, 'recall': 0.9216152019002375, 'f1_score': 0.9205219454329774}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04615641848893085, 'precision': 0.9252669039145908, 'recall': 0.9263657957244655, 'f1_score': 0.9258160237388723}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.056789568028762005, 'precision': 0.9303721488595438, 'recall': 0.9204275534441805, 'f1_score': 0.9253731343283581}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05403090619443874, 'precision': 0.929510155316607, 'recall': 0.9239904988123515, 'f1_score': 0.9267421083978559}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.050830709530288655, 'precision': 0.9195804195804196, 'recall': 0.9370546318289786, 'f1_score': 0.9282352941176469}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.056975307721423535, 'precision': 0.928235294117647, 'recall': 0.9370546318289786, 'f1_score': 0.9326241134751773}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.055356051077408784, 'precision': 0.9316037735849056, 'recall': 0.9382422802850356, 'f1_score': 0.9349112426035503}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05872975100304648, 'precision': 0.9243306169965075, 'recall': 0.9429928741092637, 'f1_score': 0.9335684891240447}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06099840703424902, 'precision': 0.9339622641509434, 'recall': 0.9406175771971497, 'f1_score': 0.9372781065088757}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.0640448581794948, 'precision': 0.9318448883666275, 'recall': 0.9418052256532067, 'f1_score': 0.9367985823981099}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.060704657932906705, 'precision': 0.9261430246189918, 'recall': 0.9382422802850356, 'f1_score': 0.9321533923303835}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.060887741956402855, 'precision': 0.9304245283018868, 'recall': 0.9370546318289786, 'f1_score': 0.9337278106508876}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06453152643178382, 'precision': 0.9405469678953626, 'recall': 0.9394299287410927, 'f1_score': 0.9399881164587046}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06386069725396683, 'precision': 0.9349881796690307, 'recall': 0.9394299287410927, 'f1_score': 0.9372037914691943}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06546352387154478, 'precision': 0.9360189573459715, 'recall': 0.9382422802850356, 'f1_score': 0.937129300118624}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06452774654781024, 'precision': 0.9372781065088758, 'recall': 0.9406175771971497, 'f1_score': 0.9389448725548311}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06414079399883121, 'precision': 0.9372781065088758, 'recall': 0.9406175771971497, 'f1_score': 0.9389448725548311}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06411192915356878, 'precision': 0.9373522458628841, 'recall': 0.9418052256532067, 'f1_score': 0.9395734597156399}
+INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb: Training loss █▆▃▂▂▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss █▁▁▁▂▁▁▂▁▂▂▂▂▂▂▂▂▂▂▂
+wandb:      f1_score ▁███████████████████
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▄▇███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▄▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▁▁
+wandb:     precision ▁███████████████████
+wandb:        recall ▁███████████████████
+wandb:    train_loss █▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.0001
+wandb:     eval_loss 0.06411
+wandb:      f1_score 0.93957
+wandb:   global_step 2080
+wandb:            lr 0.0
+wandb:     precision 0.93735
+wandb:        recall 0.94181
+wandb:    train_loss 6e-05
+wandb: 
+wandb: 🚀 View run worldly-galaxy-109 at: https://wandb.ai/tajak/NER/runs/htnxzx87
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v8
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_123421-htnxzx87/logs

@@ -69,13 +69,15 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
     
     # Define the type of dataset we are using
     # - when we extend the code for SL, change this
-    dataset_type = "standard"
+    dataset_type = "standard_hr"
 
     if "reldi" in dataset_path:
         dataset_type = "non_standard"
+    elif "set.sr" in dataset_path:
+        dataset_type = "standard_sr"
 
     # Change no. of epochs based on the model and the dataset
-    if dataset_type == "standard":
+    if dataset_type == "standard_hr":
         if model == "xlm-r-base":
             model_args["num_train_epochs"] = 9
         elif model == "csebert":
@@ -93,6 +95,15 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
             model_args["num_train_epochs"] = 7
         elif model == "bertic":
             model_args["num_train_epochs"] = 14
+    elif dataset_type == "standard_sr":
+        if model == "xlm-r-base":
+            model_args["num_train_epochs"] = 11
+        elif model == "csebert":
+            model_args["num_train_epochs"] = 9
+        elif model == "xlm-r-large":
+            model_args["num_train_epochs"] = 11
+        elif model == "bertic":
+            model_args["num_train_epochs"] = 12
 
     # Model type - a dictionary of type and model name.
     model_type_dict = {
@@ -176,8 +187,7 @@ def train_and_test(model, train_df, test_df, dataset_path, LABELS):
     return metrics
 
 # For each model, repeat training and testing 5 times - let's do 2 times for starters
-#model_list = ["xlm-r-large", "csebert", "xlm-r-base", "bertic"]
-model_list = ["csebert", "bertic"]
+model_list = ["xlm-r-large", "csebert", "xlm-r-base", "bertic"]
 
 for model in model_list:
     for run in list(range(2)):

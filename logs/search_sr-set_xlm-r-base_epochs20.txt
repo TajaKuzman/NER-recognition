@@ -38,3 +38,57 @@ INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05552184838304686, 'precis
 INFO:simpletransformers.ner.ner_model: Converting to features started.
 INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.050573312574059275, 'precision': 0.8995327102803738, 'recall': 0.9144893111638955, 'f1_score': 0.9069493521790342}
 INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.055607416067157744, 'precision': 0.9054842473745625, 'recall': 0.9216152019002375, 'f1_score': 0.9134785167745733}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05601642248715941, 'precision': 0.899188876013905, 'recall': 0.9216152019002375, 'f1_score': 0.9102639296187683}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.055010177370998316, 'precision': 0.9043173862310385, 'recall': 0.9204275534441805, 'f1_score': 0.9123013537374927}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.054809904953338026, 'precision': 0.9085580304806565, 'recall': 0.9204275534441805, 'f1_score': 0.9144542772861357}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05988137846953347, 'precision': 0.9118683901292597, 'recall': 0.9216152019002375, 'f1_score': 0.9167158889545186}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.059564568473325016, 'precision': 0.9098360655737705, 'recall': 0.9228028503562945, 'f1_score': 0.9162735849056604}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05913302125478747, 'precision': 0.9096244131455399, 'recall': 0.9204275534441805, 'f1_score': 0.9149940968122786}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05900083809390355, 'precision': 0.9186320754716981, 'recall': 0.9251781472684085, 'f1_score': 0.9218934911242602}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.059078742724468884, 'precision': 0.9086651053864169, 'recall': 0.9216152019002375, 'f1_score': 0.9150943396226414}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05934519258935053, 'precision': 0.9187279151943463, 'recall': 0.9263657957244655, 'f1_score': 0.9225310467179184}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06069910453505199, 'precision': 0.9079254079254079, 'recall': 0.9251781472684085, 'f1_score': 0.9164705882352941}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06089426427000157, 'precision': 0.9144196951934349, 'recall': 0.9263657957244655, 'f1_score': 0.9203539823008849}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06085014926424292, 'precision': 0.9131455399061033, 'recall': 0.9239904988123515, 'f1_score': 0.9185360094451003}
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.06108497824389991, 'precision': 0.9110070257611241, 'recall': 0.9239904988123515, 'f1_score': 0.9174528301886792}
+INFO:simpletransformers.ner.ner_model: Training of xlmroberta model complete. Saved to outputs/.
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb: Training loss █▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval_loss █▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:      f1_score ▁▇██████████████████
+wandb:   global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:            lr ▄▇███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▄▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▁▁
+wandb:     precision ▁▇▇█████████████████
+wandb:        recall ▁▇██████████████████
+wandb:    train_loss █▄▃▂▂▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: Training loss 0.00293
+wandb:     eval_loss 0.06108
+wandb:      f1_score 0.91745
+wandb:   global_step 2080
+wandb:            lr 0.0
+wandb:     precision 0.91101
+wandb:        recall 0.92399
+wandb:    train_loss 0.0018
+wandb: 
+wandb: 🚀 View run earnest-blaze-108 at: https://wandb.ai/tajak/NER/runs/q3153owb
+wandb: ️⚡ View job at https://wandb.ai/tajak/NER/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjkwODMzNTg1/version_details/v7
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230823_123352-q3153owb/logs

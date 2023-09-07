@@ -1,0 +1,8 @@
+['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
+(71967, 3) (8952, 3) (8936, 3)
+   sentence_id    words labels
+0            0   Vakula  B-per
+1            0    dragi      O
+2            0  Drakula  B-per
+3            0        ,      O
+4            0     kiša      O

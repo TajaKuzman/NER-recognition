@@ -1,0 +1,336 @@
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc', 'I-deriv-per']
+(398681, 3) (51190, 3) (49764, 3)
+     sentence_id      words labels
+717            0      Kazna      O
+718            0  medijskom      O
+719            0     mogulu      O
+720            0   obnovila      O
+721            0   raspravu      O
+Training started. Current model: bertic, no. of epochs: 7
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 10.1 minutes for 398681 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05021268117077887, 'precision': 0.9094368340943684, 'recall': 0.9224237746043998, 'f1_score': 0.9158842690170531}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.32 minutes for 51190 instances.
+Macro f1: 0.928, Micro f1: 0.991
+Accuracy: 0.991
+Run 0 finished.
+Training started. Current model: bertic, no. of epochs: 7
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 6.63 minutes for 398681 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.049563775351589213, 'precision': 0.9043116490166414, 'recall': 0.9228097259745273, 'f1_score': 0.9134670487106017}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.32 minutes for 51190 instances.
+Macro f1: 0.927, Micro f1: 0.991
+Accuracy: 0.991
+Run 1 finished.
+Training started. Current model: bertic, no. of epochs: 7
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 9.95 minutes for 398681 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05225983089184384, 'precision': 0.9001890359168242, 'recall': 0.9189502122732536, 'f1_score': 0.9094728800611154}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.46 minutes for 51190 instances.
+Macro f1: 0.921, Micro f1: 0.99
+Accuracy: 0.99
+Run 2 finished.
+Training started. Current model: bertic, no. of epochs: 7
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 13.46 minutes for 398681 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.052028814649224916, 'precision': 0.8961872404681012, 'recall': 0.916248552682362, 'f1_score': 0.9061068702290076}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.31 minutes for 51190 instances.
+Macro f1: 0.924, Micro f1: 0.99
+Accuracy: 0.99
+Run 3 finished.
+['B-per', 'O', 'B-org', 'B-loc', 'I-org', 'B-misc', 'I-misc', 'I-loc', 'B-deriv-per', 'I-per', 'I-deriv-per']
+(71967, 3) (8952, 3) (8936, 3)
+   sentence_id    words labels
+0            0   Vakula  B-per
+1            0    dragi      O
+2            0  Drakula  B-per
+3            0        ,      O
+4            0     kiša      O
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 9.55 minutes for 71967 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.09738456213711184, 'precision': 0.848381601362862, 'recall': 0.8660869565217392, 'f1_score': 0.8571428571428571}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.29 minutes for 8952 instances.
+Macro f1: 0.798, Micro f1: 0.982
+Accuracy: 0.982
+Run 0 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 10.58 minutes for 71967 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1014590734517209, 'precision': 0.8502581755593803, 'recall': 0.8591304347826086, 'f1_score': 0.8546712802768165}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.3 minutes for 8952 instances.
+Macro f1: 0.777, Micro f1: 0.981
+Accuracy: 0.981
+Run 1 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 6.79 minutes for 71967 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.10491495535435327, 'precision': 0.8626086956521739, 'recall': 0.8626086956521739, 'f1_score': 0.8626086956521738}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 8952 instances.
+Macro f1: 0.784, Micro f1: 0.983
+Accuracy: 0.983
+Run 2 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 4.37 minutes for 71967 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.1092713128378706, 'precision': 0.8344594594594594, 'recall': 0.8591304347826086, 'f1_score': 0.8466152527849184}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.29 minutes for 8952 instances.
+Macro f1: 0.785, Micro f1: 0.981
+Accuracy: 0.981
+Run 3 finished.
+['B-per', 'O', 'B-deriv-per', 'B-misc', 'I-misc', 'I-per', 'B-org', 'I-org', 'B-loc', 'I-loc', 'B-*', 'I-*']
+(73943, 3) (9122, 3) (9206, 3)
+   sentence_id      words labels
+0            0  @vukomand  B-per
+1            0    Gospođo      O
+2            0     Dijana  B-per
+3            0       koje      O
+4            0     lekove      O
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 3.83 minutes for 73943 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08444617624679397, 'precision': 0.8595505617977528, 'recall': 0.8453038674033149, 'f1_score': 0.8523676880222841}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.29 minutes for 9122 instances.
+Macro f1: 0.801, Micro f1: 0.988
+Accuracy: 0.988
+Run 0 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 3.84 minutes for 73943 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08527144323480093, 'precision': 0.864406779661017, 'recall': 0.8453038674033149, 'f1_score': 0.8547486033519552}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 9122 instances.
+Macro f1: 0.82, Micro f1: 0.988
+Accuracy: 0.988
+Run 1 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 3.83 minutes for 73943 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08355507391665708, 'precision': 0.8575418994413407, 'recall': 0.8480662983425414, 'f1_score': 0.8527777777777777}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 9122 instances.
+Macro f1: 0.81, Micro f1: 0.987
+Accuracy: 0.987
+Run 2 finished.
+Training started. Current model: bertic, no. of epochs: 14
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 3.83 minutes for 73943 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.08891749822093213, 'precision': 0.8614958448753463, 'recall': 0.8591160220994475, 'f1_score': 0.8603042876901799}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.27 minutes for 9122 instances.
+Macro f1: 0.808, Micro f1: 0.987
+Accuracy: 0.987
+Run 3 finished.
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc']
+(74259, 3) (11421, 3) (11993, 3)
+     sentence_id      words labels
+726            0      Kazna      O
+727            0  medijskom      O
+728            0     mogulu      O
+729            0   obnovila      O
+730            0     debatu      O
+Training started. Current model: bertic, no. of epochs: 12
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 2.08 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05125687408278911, 'precision': 0.9457964601769911, 'recall': 0.9489456159822419, 'f1_score': 0.9473684210526315}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 11421 instances.
+Macro f1: 0.934, Micro f1: 0.991
+Accuracy: 0.991
+Run 0 finished.
+Training started. Current model: bertic, no. of epochs: 12
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 2.11 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.05156904543893268, 'precision': 0.9425414364640884, 'recall': 0.946725860155383, 'f1_score': 0.9446290143964562}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 11421 instances.
+Macro f1: 0.928, Micro f1: 0.991
+Accuracy: 0.991
+Run 1 finished.
+Training started. Current model: bertic, no. of epochs: 12
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 2.09 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.04730090027800403, 'precision': 0.9510567296996663, 'recall': 0.9489456159822419, 'f1_score': 0.95}
+Some weights of the model checkpoint at classla/bcms-bertic were not used when initializing ElectraForTokenClassification: ['discriminator_predictions.dense.bias', 'discriminator_predictions.dense_prediction.weight', 'discriminator_predictions.dense_prediction.bias', 'discriminator_predictions.dense.weight']
+- This IS expected if you are initializing ElectraForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ElectraForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ElectraForTokenClassification were not initialized from the model checkpoint at classla/bcms-bertic and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Evaluation completed.
+It took 0.28 minutes for 11421 instances.
+Macro f1: 0.936, Micro f1: 0.992
+Accuracy: 0.992
+Run 2 finished.
+Training started. Current model: bertic, no. of epochs: 12
+/home/tajak/NER-recognition/ner/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+INFO:simpletransformers.ner.ner_model: Training of electra model complete. Saved to outputs/.
+INFO:simpletransformers.ner.ner_model: Converting to features started.
+Training completed.
+It took 2.1 minutes for 74259 instances.
+INFO:simpletransformers.ner.ner_model:{'eval_loss': 0.049434095671257144, 'precision': 0.946725860155383, 'recall': 0.946725860155383, 'f1_score': 0.946725860155383}
+Evaluation completed.
+It took 0.28 minutes for 11421 instances.
+Macro f1: 0.93, Micro f1: 0.991
+Accuracy: 0.991
+Run 3 finished.

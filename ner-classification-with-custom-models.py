@@ -21,258 +21,268 @@ transformers_logger.setLevel(logging.WARNING)
 
 # Import the dataset
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("dataset", help="path to the dataset in JSON format")
-    args = parser.parse_args()
+#if __name__ == '__main__':
+#    parser = argparse.ArgumentParser()
+#    parser.add_argument("dataset", help="path to the dataset in JSON format")
+#    args = parser.parse_args()
 
 # Define the path to the dataset
-dataset_path = args.dataset
+#dataset_path = args.dataset
 
-# Load the json file
-with open(dataset_path, "r") as file:
-    json_dict = json.load(file)
+# Define the path to the datasets
+datasets = ["datasets/hr500k.conllup_extracted.json", "datasets/reldi-normtagner-hr.conllup_extracted.json", "datasets/reldi-normtagner-sr.conllup_extracted.json", "datasets/set.sr.plus.conllup_extracted.json"]
 
-# Open the train, eval and test dictionaries as DataFrames
-train_df = pd.DataFrame(json_dict["train"])
-test_df = pd.DataFrame(json_dict["test"])
-dev_df = pd.DataFrame(json_dict["dev"])
+#dataset_path = args.dataset
 
-# Change the sentence_ids to numbers
-test_df['sentence_id'] = pd.factorize(test_df['sentence_id'])[0]
-train_df['sentence_id'] = pd.factorize(train_df['sentence_id'])[0]
-dev_df['sentence_id'] = pd.factorize(dev_df['sentence_id'])[0]
+# Do a loop through the datasets
+for dataset_path in datasets:
+    # Load the json file
+    with open(dataset_path, "r") as file:
+        json_dict = json.load(file)
 
-# Define the labels
-LABELS = json_dict["labels"]
-print(LABELS)
+    # Open the train, eval and test dictionaries as DataFrames
+    train_df = pd.DataFrame(json_dict["train"])
+    test_df = pd.DataFrame(json_dict["test"])
+    dev_df = pd.DataFrame(json_dict["dev"])
 
-print(train_df.shape, test_df.shape, dev_df.shape)
-print(train_df.head())
+    # Change the sentence_ids to numbers
+    test_df['sentence_id'] = pd.factorize(test_df['sentence_id'])[0]
+    train_df['sentence_id'] = pd.factorize(train_df['sentence_id'])[0]
+    dev_df['sentence_id'] = pd.factorize(dev_df['sentence_id'])[0]
 
-# Define the main model arguments
-model_args = {"overwrite_output_dir": True,
-            "num_train_epochs": 5,
-            "labels_list": LABELS,
-            "learning_rate": 1e-5,
-            "train_batch_size": 32,
-            # Comment out no_cache and no_save if you want to save the model
-            "no_cache": True,
-            "no_save": True,
-            "max_seq_length": 256,
-            "save_steps": -1,
-            "silent": True,
-            }
+    # Define the labels
+    LABELS = json_dict["labels"]
+    print(LABELS)
 
-# Create lists of all needed models for the task
-base_dict = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96"}
-large_dict = {"/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
+    print(train_df.shape, test_df.shape, dev_df.shape)
+    print(train_df.head())
 
-base_list = list(base_dict.keys())
-large_list = list(large_dict.keys())
+    # Define the main model arguments
+    model_args = {"overwrite_output_dir": True,
+                "num_train_epochs": 5,
+                "labels_list": LABELS,
+                "learning_rate": 4e-05,
+                "train_batch_size": 32,
+                # Comment out no_cache and no_save if you want to save the model
+                "no_cache": True,
+                "no_save": True,
+                "max_seq_length": 256,
+                "save_steps": -1,
+                "silent": True,
+                }
 
-# Create lists of all needed models for the task
-path_list = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
+    # Create lists of all needed models for the task
+    base_dict = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96"}
+    large_dict = {"/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-36000": "xlmrl_sl-bcms-36", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
 
-all_models_list = list(path_list.keys())
+    base_list = list(base_dict.keys())
+    large_list = list(large_dict.keys())
 
-def train_and_save_checkpoint(model_path, train_df, LABELS, model_args):
-    # When fine-tuning our custom models that we pre-trained, and using them from checkpoints, the process is a bit different than with publicly available models: first, we need to fine-tune a model from the original checkpoint, so that we save the model and overwrite its original settings which force pretraining from a specific step (and disable fine-tuning by that). Then we take that new model and fine-tune it, as we did with the models before. 
+    # Create lists of all needed models for the task
+    path_list = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-36000": "xlmrl_sl-bcms-36", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
 
-    # Add additional arguments, specific for our own models
-    # Specify the folder where we want to save the models
-    new_model_path = "models/"
-    model_args["output_dir"] = new_model_path
-    model_args["no_save"] = False
-    model_args["num_train_epoch"] = 1
+    all_models_list = list(path_list.keys())
 
-    # Define the model
-    current_model = NERModel(
-    "xlmroberta",
-    model_path,
-    labels = LABELS,
-    use_cuda=True,
-    args = model_args)
+    def train_and_save_checkpoint(model_path, train_df, LABELS, model_args):
+        # When fine-tuning our custom models that we pre-trained, and using them from checkpoints, the process is a bit different than with publicly available models: first, we need to fine-tune a model from the original checkpoint, so that we save the model and overwrite its original settings which force pretraining from a specific step (and disable fine-tuning by that). Then we take that new model and fine-tune it, as we did with the models before. 
 
-    print("Training of pre-trained model started. Current model: {}".format(model_path))
+        # Add additional arguments, specific for our own models
+        # Specify the folder where we want to save the models
+        new_model_path = "models/"
+        model_args["output_dir"] = new_model_path
+        model_args["no_save"] = False
+        model_args["num_train_epoch"] = 1
 
-    # Fine-tune the model
-    current_model.train_model(train_df)
+        # Define the model
+        current_model = NERModel(
+        "xlmroberta",
+        model_path,
+        labels = LABELS,
+        use_cuda=True,
+        args = model_args)
 
-    print("Training of pre-trained model completed.")
+        print("Training of pre-trained model started. Current model: {}".format(model_path))
 
-    print("Model saved in models/")
+        # Fine-tune the model
+        current_model.train_model(train_df)
 
-    # Clean cache
-    gc.collect()
-    torch.cuda.empty_cache()
+        print("Training of pre-trained model completed.")
 
-# After creating pre-trained model that we can use, train it properly
-def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
+        print("Model saved in models/")
 
-    # Define the model
+        # Clean cache
+        gc.collect()
+        torch.cuda.empty_cache()
 
-    # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
-    # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before).
-    # Args also depend on the dataset.
+    # After creating pre-trained model that we can use, train it properly
+    def train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args):
 
-    # Define the type of dataset we are using
-    # - when we extend the code for SL, change this
-    dataset_type = "standard_hr"
+        # Define the model
 
-    if "reldi" in dataset_path:
-        dataset_type = "non_standard"
-    elif "set.sr" in dataset_path:
-        dataset_type = "standard_sr"
+        # Define the model arguments - use the same one as for XLM-R-large if model is based on it,
+        # if the model is of same size as XLM-R-base, use its optimal hyperparameters (I searched for them before).
+        # Args also depend on the dataset.
 
-    # Change no. of epochs based on the model and the dataset
-    if dataset_type == "standard_hr":
-        # If the model is based on XLM-R-base, use the same arg as XLM-R-base
-        if "xlmrb" in model:
-            model_args["num_train_epochs"] = 9
-        # If the model is based on XLM-R-large, use the same arg as XLM-R-large
-        elif "xlmrl" in model:
-            model_args["num_train_epochs"] = 5
-    elif dataset_type == "non_standard":
-        if "xlmrb" in model:
-            model_args["num_train_epochs"] = 11
-        elif "xlmrl" in model:
-            model_args["num_train_epochs"] = 7
-    elif dataset_type == "standard_sr":
-        model_args["num_train_epochs"] = 11
+        # Define the type of dataset we are using
+        # - when we extend the code for SL, change this
+        dataset_type = "standard_hr"
 
-    # Define the model
-    current_model = NERModel(
-    "xlmroberta",
-    "models/",
-    labels = LABELS,
-    use_cuda=True,
-    args = model_args)
+        if "reldi" in dataset_path:
+            dataset_type = "non_standard"
+        elif "set.sr" in dataset_path:
+            dataset_type = "standard_sr"
 
-    print("Training started. Current model: {}".format(model))
-    start_time = time.time()
+        # Change no. of epochs based on the model and the dataset
+        if dataset_type == "standard_hr":
+            # If the model is based on XLM-R-base, use the same arg as XLM-R-base
+            if "xlmrb" in model:
+                model_args["num_train_epochs"] = 5
+            # If the model is based on XLM-R-large, use the same arg as XLM-R-large
+            elif "xlmrl" in model:
+                model_args["num_train_epochs"] = 7
+        elif dataset_type == "non_standard":
+            if "xlmrb" in model:
+                model_args["num_train_epochs"] = 8
+            elif "xlmrl" in model:
+                model_args["num_train_epochs"] = 11
+        elif dataset_type == "standard_sr":
+            if "xlmrb" in model:
+                model_args["num_train_epochs"] = 6
+            elif "xlmrl" in model:
+                model_args["num_train_epochs"] = 13
 
-    # Fine-tune the model
-    current_model.train_model(train_df)
+        # Define the model
+        current_model = NERModel(
+        "xlmroberta",
+        "models/",
+        labels = LABELS,
+        use_cuda=True,
+        args = model_args)
 
-    print("Training completed.")
+        print("Training started. Current model: {}".format(model))
+        start_time = time.time()
 
-    training_time = round((time.time() - start_time)/60,2)
+        # Fine-tune the model
+        current_model.train_model(train_df)
 
-    print("It took {} minutes for {} instances.".format(training_time, train_df.shape[0]))
+        print("Training completed.")
 
-    # Clean cache
-    gc.collect()
-    torch.cuda.empty_cache()
+        training_time = round((time.time() - start_time)/60,2)
 
-    start_evaluation_time = time.time()
+        print("It took {} minutes for {} instances.".format(training_time, train_df.shape[0]))
 
-    # Evaluate the model
-    results = current_model.eval_model(test_df)
+        # Clean cache
+        gc.collect()
+        torch.cuda.empty_cache()
 
-    print("Evaluation completed.")
+        start_evaluation_time = time.time()
 
-    evaluation_time = round((time.time() - start_evaluation_time)/60,2)
+        # Evaluate the model
+        results = current_model.eval_model(test_df)
 
-    print("It took {} minutes for {} instances.".format(evaluation_time, test_df.shape[0]))
+        print("Evaluation completed.")
 
-    # Get predictions
-    preds = results[1]
+        evaluation_time = round((time.time() - start_evaluation_time)/60,2)
 
-    # Create a list with predictions
-    preds_list = []
+        print("It took {} minutes for {} instances.".format(evaluation_time, test_df.shape[0]))
 
-    for sentence in preds:
-        for word in sentence:
-            current_word = []
-            for element in word:
-                # Find prediction with the highest value
-                highest_index = element.index(max(element))
-                # Transform the index to label
-                current_pred = current_model.config.id2label[highest_index]
-                # Append to the list
-                current_word.append(current_pred)
-            # Segmentation can result in multiple predictions for one word - use the first prediction only
-            preds_list.append(current_word[0])
-    
-    # Get y_true
-    y_true = list(test_df.labels)
+        # Get predictions
+        preds = results[1]
 
-    run_name = "{}-{}".format(dataset_path, model)
+        # Create a list with predictions
+        preds_list = []
 
-    # Evaluate predictions
-    metrics = evaluate.testing(y_true, preds_list, list(test_df.labels.unique()), run_name, show_matrix=True)
+        for sentence in preds:
+            for word in sentence:
+                current_word = []
+                for element in word:
+                    # Find prediction with the highest value
+                    highest_index = element.index(max(element))
+                    # Transform the index to label
+                    current_pred = current_model.config.id2label[highest_index]
+                    # Append to the list
+                    current_word.append(current_pred)
+                # Segmentation can result in multiple predictions for one word - use the first prediction only
+                preds_list.append(current_word[0])
+        
+        # Get y_true
+        y_true = list(test_df.labels)
 
-    # Add y_pred and y_true to the metrics dict
-    metrics["y_true"] = y_true
-    metrics["y_pred"] = preds_list
+        run_name = "{}-{}".format(dataset_path, model)
 
-    # Let's also add entire results
-    metrics["results_output"] = results    
-    
-    # The function returns a dict with accuracy, micro f1, macro f1, y_true and y_pred
-    return metrics
+        # Evaluate predictions
+        metrics = evaluate.testing(y_true, preds_list, list(test_df.labels.unique()), run_name, show_matrix=True)
 
-# For each model, repeat training and testing 5 times - let's do 2 times for starters
-model_list = base_list
-#model_list = large_list
-#model_list = all_models_list
+        # Add y_pred and y_true to the metrics dict
+        metrics["y_true"] = y_true
+        metrics["y_pred"] = preds_list
 
+        # Let's also add entire results
+        metrics["results_output"] = results    
+        
+        # The function returns a dict with accuracy, micro f1, macro f1, y_true and y_pred
+        return metrics
 
-for model_path in model_list:
-    # First, save a fine-tuned version that we can use for proper fine-tuning
-    train_and_save_checkpoint(model_path, train_df, LABELS, model_args)
-    model = path_list[model_path]
-    # Then do multiple runs with this model
-    for run in list(range(2)):
-        current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args)
-
-        # Add to the dict model name, dataset name and run
-        current_results_dict["model"] = model
-        current_results_dict["run"] = "{}-{}".format(model, run)
-        current_results_dict["dataset"] = dataset_path
-
-        # Add to the file with results all important information
-        with open("ner-results-our-models.txt", "a") as file:
-            file.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), current_results_dict["model"], current_results_dict["run"], current_results_dict["dataset"], current_results_dict["micro F1"], current_results_dict["macro F1"], current_results_dict["label-report"]))
-
-        # Add to the original test_df y_preds
-        test_df["y_pred_{}_{}".format(model, run)] = current_results_dict["y_pred"]
-
-        # Save also y_pred and y_true
-        with open("logs/{}-{}-{}-true-and-pred-backlog.txt".format(dataset_path,model,run), "w") as backlog:
-            backlog.write("y-true\ty-pred\toutputs\n")
-            backlog.write("{}\t{}\t{}\n".format(current_results_dict["y_true"], current_results_dict["y_pred"], current_results_dict["results_output"]))
-    
-        print("Run {} finished.".format(run))
-    
-    # Then delete the model from the /models folder
-    folder_path = "models"
-
-    # List all files in the folder
-    file_list = os.listdir(folder_path)
-
-    # Loop through the files and delete each one
-    for file_name in file_list:
-        file_path = os.path.join(folder_path, file_name)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
+    # For each model, repeat training and testing 5 times - let's do 2 times for starters
+    model_list = base_list
+    #model_list = large_list
+    #model_list = all_models_list
 
 
-# At the end, save the test_df with all predictions
-test_df.to_csv("{}-test_df-with-predictions-custom-models.csv".format(dataset_path))
+    for model_path in model_list:
+        # First, save a fine-tuned version that we can use for proper fine-tuning
+        train_and_save_checkpoint(model_path, train_df, LABELS, model_args)
+        model = path_list[model_path]
+        # Let's do 3 more runs
+        for run in [0,1,2]:
+            current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args)
 
-# At the end, create a csv table with a summary of results
+            # Add to the dict model name, dataset name and run
+            current_results_dict["model"] = model
+            current_results_dict["run"] = "{}-{}".format(model, run)
+            current_results_dict["dataset"] = dataset_path
 
-results = pd.read_csv("ner-results-our-models.txt", sep="\t")
+            # Add to the file with results all important information
+            with open("ner-results-custom.txt", "a") as file:
+                file.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), current_results_dict["model"], current_results_dict["run"], current_results_dict["dataset"], current_results_dict["micro F1"], current_results_dict["macro F1"], current_results_dict["label-report"]))
 
-results["Macro F1"] = results["Macro F1"].round(2)
+            # Add to the original test_df y_preds
+            test_df["y_pred_{}_{}".format(model, run)] = current_results_dict["y_pred"]
 
-# Pivot the DataFrame to rearrange columns into rows
-pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
+            # Save also y_pred and y_true
+            with open("logs/{}-{}-{}-true-and-pred-backlog.txt".format(dataset_path,model,run), "w") as backlog:
+                backlog.write("y-true\ty-pred\toutputs\n")
+                backlog.write("{}\t{}\t{}\n".format(current_results_dict["y_true"], current_results_dict["y_pred"], current_results_dict["results_output"]))
+        
+            print("Run {} finished.".format(run))
+        
+        # Then delete the model from the /models folder
+        folder_path = "models"
 
-# Reset the index to have 'Model' as a column
-pivot_df.reset_index(inplace=True)
+        # List all files in the folder
+        file_list = os.listdir(folder_path)
 
-# Pivot the DataFrame to rearrange columns into rows
-pivot_df.to_csv("ner-results-summary-table-our-models.csv")
+        # Loop through the files and delete each one
+        for file_name in file_list:
+            file_path = os.path.join(folder_path, file_name)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+
+
+    # At the end, save the test_df with all predictions
+    test_df.to_csv("{}-test_df-with-predictions-custom-models.csv".format(dataset_path))
+
+    # At the end, create a csv table with a summary of results
+
+    results = pd.read_csv("ner-results-custom.txt", sep="\t")
+
+    results["Macro F1"] = results["Macro F1"].round(2)
+
+    # Pivot the DataFrame to rearrange columns into rows
+    pivot_df = results.pivot(index='Run', columns='Dataset', values='Macro F1')
+
+    # Reset the index to have 'Model' as a column
+    pivot_df.reset_index(inplace=True)
+
+    # Pivot the DataFrame to rearrange columns into rows
+    pivot_df.to_csv("ner-results-summary-table-our-models.csv")

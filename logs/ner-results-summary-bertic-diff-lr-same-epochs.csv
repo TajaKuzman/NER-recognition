@@ -1,0 +1,5 @@
+,Run,datasets/hr500k.conllup_extracted.json,datasets/reldi-normtagner-hr.conllup_extracted.json,datasets/reldi-normtagner-sr.conllup_extracted.json,datasets/set.sr.plus.conllup_extracted.json
+0,bertic-0,0.93,0.8,0.8,0.93
+1,bertic-1,0.93,0.78,0.82,0.93
+2,bertic-2,0.92,0.78,0.81,0.94
+3,bertic-3,0.92,0.78,0.81,0.93

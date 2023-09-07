@@ -21,7 +21,6 @@ wandb.login()
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dataset", help="path to the dataset in JSON format")
 parser.add_argument("-ln", "--lm_name", type=str, default="xlm-r-base", required=True, help="LM model to use for hyperparameter search: xlm-r-base, xlm-r-large, csebert or bertic")
-parser.add_argument("-e", "--epoch", type=int, required=True, help = "Number of epochs to run fine-tuning" )
 args = parser.parse_args()
 
 # Import the dataset
@@ -63,7 +62,7 @@ model_type_dict = {
     "bertic": ["electra", "classla/bcms-bertic"]
 }
 
-epochs = args.epoch
+epochs = 15
 batch_size = 32
 
 model_args = NERArgs()
@@ -72,7 +71,7 @@ model_args = NERArgs()
 model_args ={"overwrite_output_dir": True,
              "num_train_epochs": epochs,
              "labels_list": LABELS,
-             "learning_rate": 1e-5,
+             "learning_rate": 4e-05,
              "train_batch_size": batch_size,
              # Comment out no_cache and no_save if you want to save the model
              "no_cache": True,

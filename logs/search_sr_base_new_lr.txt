@@ -1,0 +1,8 @@
+['O', 'B-loc', 'B-org', 'B-per', 'I-per', 'B-deriv-per', 'I-org', 'I-loc', 'B-misc', 'I-misc']
+(74259, 3) (11421, 3) (11993, 3)
+     sentence_id      words labels
+726            0      Kazna      O
+727            0  medijskom      O
+728            0     mogulu      O
+729            0   obnovila      O
+730            0     debatu      O

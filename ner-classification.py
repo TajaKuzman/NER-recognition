@@ -30,7 +30,9 @@ transformers_logger.setLevel(logging.WARNING)
 #dataset_path = args.dataset
 
 # Define the path to the datasets
-datasets = ["datasets/hr500k.conllup_extracted.json", "datasets/reldi-normtagner-hr.conllup_extracted.json", "datasets/reldi-normtagner-sr.conllup_extracted.json", "datasets/set.sr.plus.conllup_extracted.json"]
+#datasets = ["datasets/hr500k.conllup_extracted.json", "datasets/reldi-normtagner-hr.conllup_extracted.json", "datasets/reldi-normtagner-sr.conllup_extracted.json", "datasets/set.sr.plus.conllup_extracted.json"]
+
+datasets = ["datasets/reldi-normtagner-sr.conllup_extracted.json"]
 
 #dataset_path = args.dataset
 
@@ -102,7 +104,7 @@ for dataset_path in datasets:
             elif model == "xlm-r-large":
                 model_args["num_train_epochs"] = 11
             elif model == "bertic":
-                model_args["num_train_epochs"] = 6
+                model_args["num_train_epochs"] = 10
         elif dataset_type == "standard_sr":
             if model == "xlm-r-base":
                 model_args["num_train_epochs"] = 6
@@ -111,7 +113,7 @@ for dataset_path in datasets:
             elif model == "xlm-r-large":
                 model_args["num_train_epochs"] = 13
             elif model == "bertic":
-                model_args["num_train_epochs"] = 8
+                model_args["num_train_epochs"] = 10
 
         # Model type - a dictionary of type and model name.
         model_type_dict = {
@@ -195,12 +197,14 @@ for dataset_path in datasets:
         return metrics
 
     # For each model, repeat training and testing 3 times
-    model_list = ["xlm-r-base", "csebert", "bertic"]#,"xlm-r-large"]
+    model_list = ["xlm-r-large"]
+    #model_list = ["xlm-r-base", "csebert", "bertic"]#,"xlm-r-large"]
 
     for model in model_list:
         #for run in list(range(2)):
         # Let's do two more runs
-        for run in [0,1,2]:
+        #for run in [0,1,2]:
+        for run in [0]:
             current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS)
 
             # Add to the dict model name, dataset name and run

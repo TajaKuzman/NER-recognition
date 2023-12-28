@@ -1,0 +1,13 @@
+,Run,datasets/hr500k.conllup_extracted.json,datasets/reldi-normtagner-hr.conllup_extracted.json,datasets/reldi-normtagner-sr.conllup_extracted.json,datasets/set.sr.plus.conllup_extracted.json
+0,bertic-0,0.92,0.79,0.81,0.93
+1,bertic-1,0.93,0.77,0.82,0.94
+2,bertic-2,0.93,0.81,0.76,0.93
+3,csebert-0,0.92,0.79,0.75,0.92
+4,csebert-1,0.92,0.8,0.74,0.92
+5,csebert-2,0.92,0.8,0.76,0.92
+6,xlm-r-base-0,0.9,0.75,0.72,0.91
+7,xlm-r-base-1,0.9,0.76,0.72,0.92
+8,xlm-r-base-2,0.9,0.78,0.76,0.91
+9,xlm-r-large-0,0.92,0.77,0.76,0.93
+10,xlm-r-large-1,0.93,0.8,0.79,0.94
+11,xlm-r-large-2,0.91,0.8,0.77,0.93

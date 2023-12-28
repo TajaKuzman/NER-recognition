@@ -30,7 +30,9 @@ transformers_logger.setLevel(logging.WARNING)
 #dataset_path = args.dataset
 
 # Define the path to the datasets
-datasets = ["datasets/hr500k.conllup_extracted.json", "datasets/reldi-normtagner-hr.conllup_extracted.json", "datasets/reldi-normtagner-sr.conllup_extracted.json", "datasets/set.sr.plus.conllup_extracted.json"]
+#datasets = ["datasets/hr500k.conllup_extracted.json", "datasets/reldi-normtagner-hr.conllup_extracted.json", "datasets/reldi-normtagner-sr.conllup_extracted.json", "datasets/set.sr.plus.conllup_extracted.json"]
+
+datasets = ["datasets/reldi-normtagner-sr.conllup_extracted.json"]
 
 #dataset_path = args.dataset
 
@@ -77,6 +79,9 @@ for dataset_path in datasets:
 
     base_list = list(base_dict.keys())
     large_list = list(large_dict.keys())
+
+    add_dict = {"/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42"}
+    add_list = list(add_dict.keys())
 
     # Create lists of all needed models for the task
     path_list = {"/cache/nikolal/xlmrb_bcms_exp/checkpoint-12000": "xlmrb_bcms-12", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-24000": "xlmrb_bcms-24", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-36000": "xlmrb_bcms-36", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-48000": "xlmrb_bcms-48", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-60000": "xlmrb_bcms-60", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-72000": "xlmrb_bcms-72", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-84000": "xlmrb_bcms-84", "/cache/nikolal/xlmrb_bcms_exp/checkpoint-96000": "xlmrb_bcms-96", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-6000": "xlmrl_bcms-6", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-12000":"xlmrl_bcms-12", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-18000": "xlmrl_bcms-18", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-24000": "xlmrl_bcms-24", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-30000": "xlmrl_bcms-30", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-36000": "xlmrl_bcms-36", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-42000": "xlmrl_bcms-42", "/cache/nikolal/xlmrl_bcms_exp/checkpoint-48000": "xlmrl_bcms-48", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-6000": "xlmrl_sl-bcms-6", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-12000": "xlmrl_sl-bcms-12", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-18000": "xlmrl_sl-bcms-18", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-24000": "xlmrl_sl-bcms-24", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-30000": "xlmrl_sl-bcms-30", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-36000": "xlmrl_sl-bcms-36", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-42000": "xlmrl_sl-bcms-42", "/cache/nikolal/xlmrl_sl-bcms_exp/checkpoint-48000": "xlmrl_sl-bcms-48"}
@@ -224,9 +229,10 @@ for dataset_path in datasets:
         return metrics
 
     # For each model, repeat training and testing 5 times - let's do 2 times for starters
-    model_list = base_list
+    #model_list = base_list
     #model_list = large_list
     #model_list = all_models_list
+    model_list = add_list
 
 
     for model_path in model_list:
@@ -234,7 +240,9 @@ for dataset_path in datasets:
         train_and_save_checkpoint(model_path, train_df, LABELS, model_args)
         model = path_list[model_path]
         # Let's do 3 more runs
-        for run in [0,1,2]:
+        #for run in [0,1,2]:
+        # Let's do one run for starters
+        for run in [1,2]:
             current_results_dict = train_and_test(model, train_df, test_df, dataset_path, LABELS, model_args)
 
             # Add to the dict model name, dataset name and run
@@ -243,7 +251,7 @@ for dataset_path in datasets:
             current_results_dict["dataset"] = dataset_path
 
             # Add to the file with results all important information
-            with open("ner-results-custom.txt", "a") as file:
+            with open("ner-results-all.txt", "a") as file:
                 file.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), current_results_dict["model"], current_results_dict["run"], current_results_dict["dataset"], current_results_dict["micro F1"], current_results_dict["macro F1"], current_results_dict["label-report"]))
 
             # Add to the original test_df y_preds
@@ -274,7 +282,7 @@ for dataset_path in datasets:
 
     # At the end, create a csv table with a summary of results
 
-    results = pd.read_csv("ner-results-custom.txt", sep="\t")
+    results = pd.read_csv("ner-results-all.txt", sep="\t")
 
     results["Macro F1"] = results["Macro F1"].round(2)
 
@@ -285,4 +293,4 @@ for dataset_path in datasets:
     pivot_df.reset_index(inplace=True)
 
     # Pivot the DataFrame to rearrange columns into rows
-    pivot_df.to_csv("ner-results-summary-table-our-models.csv")
+    pivot_df.to_csv("ner-results-summary-table-large-models.csv")
